@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Favicon -->
+	
+    <link href="images/fav.png" rel="icon">
+
+	<!-- Google Web Fonts -->
+	
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+	<!-- Bootstrap CSS --> 
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
+  <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/> 
+     
+	  <link rel="stylesheet" href="css/custom.css"> 
+	      <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
+	    <script src="assets/vendors/jquery.min.js"></script>
+		<script src="assets/owlcarousel/owl.carousel.js"></script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" /> 
+
+        <!-- Icon Font Stylesheet -->
+         
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <title>PGS-AI</title>
+<script>
+
+$(document).ready(function(){
+	$('#nav-icon1,#nav-icon2,#nav-icon3,#nav-icon4').click(function(){
+		$(this).toggleClass('open');
+	});
+});
+ 
+ import {
+  Color,
+  DodecahedronBufferGeometry,
+  IcosahedronBufferGeometry,
+  InstancedBufferAttribute,
+  InstancedMesh,
+  MathUtils,
+  Object3D,
+  PointLight,
+  Scene,
+  ShaderChunk,
+  ShaderLib,
+  ShaderMaterial,
+  TetrahedronBufferGeometry,
+  UniformsUtils,
+  Vector2,
+  Vector3,
+} from '//cdn.skypack.dev/three@0.125.0/build/three.module.js?min';
+
+import { EffectComposer } from '//cdn.skypack.dev/three@0.125.0/examples/jsm/postprocessing/EffectComposer.js?min';
+import { RenderPass } from '//cdn.skypack.dev/three@0.125.0/examples/jsm/postprocessing/RenderPass.js?min';
+import { UnrealBloomPass } from '//cdn.skypack.dev/three@0.125.0/examples/jsm/postprocessing/UnrealBloomPass.js?min';
+import { ShaderPass } from '//cdn.skypack.dev/three@0.125.0/examples/jsm/postprocessing/ShaderPass.js?min';
+import { FXAAShader } from '//cdn.skypack.dev/three@0.125.0/examples/jsm/shaders/FXAAShader.js?min';
+
+import useThree from 'https://codepen.io/soju22/pen/cb31020fed766eb66bc8ad1879bc3325.js';
+
+App();
+
+function App() {
+  let three, scene, composer, iMesh;
+  let pointLight;
+  let cscale = chroma.scale(['#dd3e1b', '#0b509c']);
+
+  const NUM_INSTANCES = 5000;
+  const instances = [];
+
+  const target = new Vector3();
+  const dummy = new Object3D();
+  const dummyV = new Vector3();
+
+  const { randFloat: rnd, randFloatSpread: rndFS } = MathUtils;
+
+  init();
+
+  function init() {
+    three = useThree().init({
+      canvas: document.getElementById('canvas'),
+      antialias: false,
+      mouse_move: true,
+      mouse_raycast: true,
+      camera_ctrl: {
+        enableDamping: true,
+        dampingFactor: 0.05,
+      },
+      camera_fov: 50,
+      camera_pos: new Vector3(0, 0, 250),
+    });
+
+    initScene();
+    initPostprocessing();
+    animate();
+  }
+
+  function initScene() {
+    scene = new Scene();
+    pointLight = new PointLight(0xFFC0C0);
+    scene.add(pointLight);
+
+    // const pointLight1 = new PointLight(0x6060FF);
+    // pointLight1.position.x = -100;
+    // scene.add(pointLight1);
+    // const pointLight2 = new PointLight(0xFF6060);
+    // pointLight2.position.x = 100;
+    // scene.add(pointLight2);
+
+    const geometry = new DodecahedronBufferGeometry(5);
+    // const geometry = new IcosahedronBufferGeometry(5);
+    // const geometry = new TetrahedronBufferGeometry(5);
+    const material = SubSurfaceMaterial();
+    iMesh = new InstancedMesh(geometry, material, NUM_INSTANCES);
+    scene.add(iMesh);
+
+    for (let i = 0; i < NUM_INSTANCES; i++) {
+      instances.push({
+        position: new Vector3(rndFS(200), rndFS(200), rndFS(200)),
+        scale: rnd(0.2, 1),
+        velocity: new Vector3(rndFS(2), rndFS(2), rndFS(2)),
+        attraction: 0.0025 + rnd(0, 0.01),
+        vlimit: 0.3 + rnd(0, 0.2),
+      });
+    }
+
+    for (let i = 0; i < NUM_INSTANCES; i++) {
+      const { position, scale } = instances[i];
+      dummy.position.copy(position);
+      dummy.scale.set(scale, scale, scale);
+      dummy.updateMatrix();
+      iMesh.setMatrixAt(i, dummy.matrix);
+    }
+    iMesh.instanceMatrix.needsUpdate = true;
+
+    updateColors();
+    document.body.addEventListener('click', randomColors);
+  }
+
+  function randomColors() {
+    const c1 = chroma.random(), c2 = chroma.random();
+    console.log(c1.hex(), c2.hex());
+    cscale = chroma.scale([c1, c2]);
+    updateColors();
+  }
+
+  function updateColors() {
+    const colors = [];
+    for (let i = 0; i < NUM_INSTANCES; i++) {
+      const color = new Color(cscale(rnd(0, 1)).hex());
+      colors.push(color.r, color.g, color.b);
+    }
+    iMesh.geometry.setAttribute('color', new InstancedBufferAttribute(new Float32Array(colors), 3));
+  }
+
+  function initPostprocessing() {
+    composer = new EffectComposer(three.renderer);
+
+    const renderPass = new RenderPass(scene, three.camera);
+    composer.addPass(renderPass);
+
+    const bloomPass = new UnrealBloomPass(new Vector2(three.size.width, three.size.height), 0.5, 0, 0);
+    composer.addPass(bloomPass);
+
+    const aaPass = new ShaderPass(FXAAShader);
+    composer.addPass(aaPass);
+    aaPass.material.uniforms.resolution.value.set(1 / three.size.width, 1 / three.size.height);
+
+    three.onAfterResize(() => {
+      composer.setSize(three.size.width, three.size.height);
+      aaPass.material.uniforms.resolution.value.set(1 / three.size.width, 1 / three.size.height);
+    });
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    const { renderer, camera, cameraCtrl } = three;
+
+    target.copy(three.mouseV3);
+    pointLight.position.copy(target);
+
+    for (let i = 0; i < NUM_INSTANCES; i++) {
+      const { position, scale, velocity, attraction, vlimit } = instances[i];
+
+      dummyV.copy(target).sub(position).normalize().multiplyScalar(attraction);
+      velocity.add(dummyV).clampScalar(-vlimit, vlimit);
+      position.add(velocity);
+
+      dummy.position.copy(position);
+      dummy.scale.set(scale, scale, scale);
+      dummy.lookAt(dummyV.copy(position).add(velocity));
+      dummy.updateMatrix();
+      iMesh.setMatrixAt(i, dummy.matrix);
+    }
+    iMesh.instanceMatrix.needsUpdate = true;
+
+    if (cameraCtrl) cameraCtrl.update();
+    composer.render();
+  }
+}
+
+/**
+ * ------------------------------------------------------------------------------------------
+ * Subsurface Scattering shader
+ * Based on three/examples/jsm/shaders/SubsurfaceScatteringShader.js
+ * Based on GDC 2011 – Approximating Translucency for a Fast, Cheap and Convincing Subsurface Scattering Look
+ * https://colinbarrebrisebois.com/2011/03/07/gdc-2011-approximating-translucency-for-a-fast-cheap-and-convincing-subsurface-scattering-look/
+ *------------------------------------------------------------------------------------------
+*/
+function SubSurfaceMaterial() {
+  const meshphongFragHead = ShaderChunk.meshphong_frag.slice(0, ShaderChunk.meshphong_frag.indexOf('void main() {'));
+  const meshphongFragBody = ShaderChunk.meshphong_frag.slice(ShaderChunk.meshphong_frag.indexOf('void main() {'));
+
+  return new ShaderMaterial({
+    lights: true,
+    vertexColors: true,
+    flatShading: true,
+    uniforms: UniformsUtils.merge([
+      ShaderLib.phong.uniforms,
+      {
+        // diffuse: { value: new Color(0xffffff) },
+        thicknessColor: { value: new Color(0x808080) },
+        thicknessDistortion: { value: 0.4 },
+        thicknessAmbient: { value: 0.01 },
+        thicknessAttenuation: { value: 0.7 },
+        thicknessPower: { value: 2.0 },
+        thicknessScale: { value: 4.0 },
+      },
+    ]),
+
+    vertexShader: `
+      #define USE_UV
+      ${ShaderChunk.meshphong_vert}
+    `,
+
+    fragmentShader: `
+      #define USE_UV
+      #define SUBSURFACE
+
+      ${meshphongFragHead}
+
+      uniform float thicknessPower;
+      uniform float thicknessScale;
+      uniform float thicknessDistortion;
+      uniform float thicknessAmbient;
+      uniform float thicknessAttenuation;
+      uniform vec3 thicknessColor;
+
+      void RE_Direct_Scattering(const in IncidentLight directLight, const in vec2 uv, const in GeometricContext geometry, inout ReflectedLight reflectedLight) {
+        #ifdef USE_COLOR
+          vec3 thickness = vColor * thicknessColor;
+        #else
+          vec3 thickness = thicknessColor;
+        #endif
+        vec3 scatteringHalf = normalize(directLight.direction + (geometry.normal * thicknessDistortion));
+        float scatteringDot = pow(saturate(dot(geometry.viewDir, -scatteringHalf)), thicknessPower) * thicknessScale;
+        vec3 scatteringIllu = (scatteringDot + thicknessAmbient) * thickness;
+        reflectedLight.directDiffuse += scatteringIllu * thicknessAttenuation * directLight.color;
+      }
+    ` + meshphongFragBody.replace(
+      '#include <lights_fragment_begin>',
+      replaceAll(
+        ShaderChunk.lights_fragment_begin,
+        'RE_Direct( directLight, geometry, material, reflectedLight );',
+        `
+          RE_Direct( directLight, geometry, material, reflectedLight );
+          #if defined( SUBSURFACE ) && defined( USE_UV )
+            RE_Direct_Scattering(directLight, vUv, geometry, reflectedLight);
+          #endif
+        `
+      )
+    ),
+  });
+
+  function replaceAll(string, find, replace) {
+    return string.split(find).join(replace);
+  }
+};
+
+ </script>
+ 
+ <style>
+ body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+ </style>
+  </head>
+  <body>
+   <!-- Spinner Start 
+        <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>-->
+        <!-- Spinner End -->
+<header class="header sticky-top">
+	  <div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+		  
+		  <!-- Logo -->
+		  <a class="navbar-brand" href="index.html">
+			<img src="images/logo.png" class="logo-footer" alt="Logo">
+		  </a>
+
+		  <!-- Toggler -->
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			 
+			 <div class="respMenu icon" style="font-size:30px;cursor:pointer" onclick="myFunction()"> 
+			 <div id="nav-icon1">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</div>
+		  </button>
+
+		  <!-- Menu -->
+		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav ml-auto">
+
+			  <li class="nav-item active">
+				<a class="nav-link" href="index.html">Home</a>
+			  </li>
+
+			  <li class="nav-item dropdown">
+				<a class="nav-link page-scroll" href="about.html">About Us</a>
+				 
+			  </li>
+
+			  <li class="nav-item">
+				<a class="nav-link page-scroll" href="Education_Solutions.html">Education Solutions</a>
+			  </li>
+
+			  <li class="nav-item">
+				<a class="nav-link page-scroll" href="Business_Solutions.html">Business Solutions</a>
+			  </li>
+
+			  <li class="nav-item">
+				<a class="nav-link page-scroll" href="contact_us.html"> Contact Us</a>
+			  </li>
+
+			</ul>
+		  </div>
+
+		  <!-- Button -->
+			<a href="Get_Started.html" class="btn btn-primary btn-primary12 ml-3" style="transform: scale(1); data-aos="fade-up" data-aos-delay="150" >Get Started </a>
+		  
+		</nav>
+	  </div>
+	</header>
+
+ 
+  <!--header -end-->
+  
+ 
+ <!--hero section Start-->
+ <section class="banner hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+          <div class="col-md-5 col-lg-5 order-md-2">
+              <img src="images/2.gif" Style="width:100%;">
+			 
+			    
+          </div>
+            <div class="col-md-7 col-lg-7 order-md-1 mt-5 mt-md-0">
+			<div class="text_section animate__animated animate__slideInDown aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                <h3  data-aos="fade-up" data-aos-delay="150" Style="    color: #02c0f0;">Applied Artificial Intelligence (AI)</h3>
+                <p class="mt-3" data-aos="fade-up" data-aos-delay="150">Where Cutting-Edge AI Meets Real-World Impact</p>  <br> 
+								<a href="Get_Started.html" class="btn btn-primary btn-primary13 ml-3" style="transform: scale(1); data-aos="fade-up" data-aos-delay="150" >Get Started →</a>
+				</div> 
+            </div>
+        </div>
+    </div>
+</section>
+<div class="div_sect"></div>
+	<!-- hero-section"> -->
+	    <!--second section start-->
+	<!--<section class="sec-sect py-5" >
+		<div class="container ">
+			<div class="row"> 
+				<div class="col-lg-12 col-sm-12 col-md-12">
+					 <div class="col-sect2">
+						<div class="row"> 
+						  <div class="column1">
+							<div class="card1"> 
+							  <h3 class="counter">10 K +</h3>  
+							  <p>Active Learners</p>
+							</div>
+						  </div>
+
+						  <div class="column1">
+							<div class="card1">
+							    <h3 class="counter" data-count-start="0" data-count-end="98" data-speed="10"></h3> 
+							  
+							  <p>Success Rate</p>
+							</div>
+						  </div>
+						  
+						  <div class="column1">
+							<div class="card1"> 
+							 <h3 class="counter" data-count-start="50" data-count-end="100" data-speed="10">+</h3> 
+							  <p>Courses Available</p>
+							</div>
+						  </div>
+						  
+						  <div class="column1">
+							<div class="card1">
+									<h3 class="counter">24/7</h3> 	 
+							  <p>AI Support</p>
+							</div>
+						  </div>
+						</div>
+				</div> 
+				 
+			</div>
+		</div>
+	</section>-->
+	
+		    <!--second section start-->
+	<section class="sec-sect sec-sect1 py-5" >
+		<div class="container "> 
+
+				<div class="row">
+					<div class="sect-op">
+						<h1 class="mb-15"  data-aos="fade-up" data-aos-delay="210" >Powerful Features Built for Success</h1>
+					<p data-aos="fade-up" data-aos-delay="150">Everything you need to revolutionize your learning experience</p>
+					</div>
+				  <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+					<div class="card2">
+					  <div class="card-body">
+					  <div class="feature-icon">🤖</div>
+						<h5 class="card-title">AI-Powered Learning</h5>
+						<p class="card-text">Personalized learning paths that adapt to each student's pace and style using advanced machine learning algorithms.</p>
+						 
+					  </div>
+					</div>
+				  </div>
+				  <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up" data-aos-delay="150" >
+					<div class="card2">
+					  <div class="card-body">
+					  <div class="feature-icon">📊</div>
+						<h5 class="card-title">Real-Time Analytics</h5>
+						<p class="card-text">Comprehensive dashboards providing actionable insights into student progress, learning gaps, and performance metrics.</p>
+						 
+					  </div>
+					</div>
+				  </div>
+				  <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up" data-aos-delay="180" >
+					<div class="card2">
+					  <div class="card-body">
+					  <div class="feature-icon">✨</div>
+						<h5 class="card-title">Smart Assessment</h5>
+						<p class="card-text">Intelligent testing system with adaptive difficulty, instant feedback, and detailed performance analysis.</p>
+					 
+					  </div>
+					</div>
+				  </div>
+				   <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up" data-aos-delay="190" >
+					<div class="card2">
+					  <div class="card-body">
+					  <div class="feature-icon">🎓</div>
+						<h5 class="card-title">Curriculum Alignment</h5>
+						<p class="card-text">Content aligned with global standards and customizable to match local educational requirements and goals.</p>
+						 
+					  </div>
+					</div>
+				  </div>
+				</div>
+		</div>
+		 
+	</section>
+    <!--second section start-->
+	<section class="sec-sect py-5" >
+		<div class="container ">
+			<div class="row"> 
+				<div class="col-lg-7 col-sm-12 col-md-12">
+					<div class="head-seched" >
+						<h1 data-aos="fade-up" data-aos-delay="200">Business Solutions</h1> 
+						<p data-aos="fade-up" data-aos-delay="200"> Empowering organizations with intelligent, scalable, and future-ready digital solutions designed to accelerate growth and improve operational efficiency. Our Business Solutions combine advanced technology, data-driven insights, and user-centric design to help businesses innovate, automate, and thrive in a competitive market.</p>
+						<div class="row gy-2 gx-4 mb-4" data-aos="fade-up" data-aos-delay="200" >
+						<div class="col-lg-12">
+							<ul>
+								<li> Modernize your workflows, migrate to cloud platforms, and streamline operations using AI-driven automation and smart tools tailored to your business needs.</li>
+								<li>  Custom enterprise-grade applications designed for performance, security, and scalability—built to simplify complex business processes.</li>
+								<li> Integrate AI models, chatbots, predictive analytics, and intelligent automation systems to reduce manual work, improve accuracy, and enhance decision-making.</li>
+								<li> Implement and customize platforms like Vtiger, Salesforce, Odoo, and custom ERP systems to optimize customer engagement and business operations.</li>
+								<li> Transform raw data into actionable insights with dashboards, reporting tools, and predictive models to support smarter, faster decisions.</li>
+								<li> Deploy secure, scalable cloud environments with continuous monitoring and optimization for maximum performance and reliability.</li>	
+							 
+							</ul>
+							<a href="Business_Solutions.html" class="btn btn-primary btn-primary13 ml-3" data-aos="fade-up" data-aos-delay="150" style="transform: scale(1);">Explore Features Now →</a>  
+						</div>  
+                    </div> 
+					 
+					</div> 
+					 
+				</div> 
+				<div class="col-lg-5 col-sm-12 col-md-12"> 
+					<div class="head-sec-img"  data-aos="zoom-in-up" data-aos-delay="300">
+					<img src="images/41.jpg" class="img-fluid w-100" alt="">
+					</div> 
+				</div>
+			</div>
+		</div>
+	</section>
+ 
+	  <!--second section ends-->
+	  <div class="div_sect"></div>
+	<!--third-section-start-->
+ 
+	<!--<section class="about-sect py-5">
+		<div class="container">
+			<div class="row"> 
+				<div class="container-fluid overflow-hidden py-5"  >
+					<div class="container py-5">
+						<div class="row g-5">
+							<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+								<div class="RotateMoveLeft"  data-aos="fade-right" data-aos-delay="250">
+									<img src="images/about-1.png" class="img-fluid w-100" alt="">
+								</div>
+							</div>
+							<div class="col-lg-6" >
+								<h4 class="mb-1 text-primary"  data-aos="fade-up" data-aos-delay="210">AI in Education	</h4>
+								<h1 class="display-5 mb-4"  data-aos="fade-up" data-aos-delay="200">Transforming Learning with Intelligent Technology</h1>
+								<p class="mb-4"  data-aos="fade-up" data-aos-delay="150">AI in Education enhances teaching, learning, and administration by using intelligent systems that personalize experiences, automate processes, and provide real-time insights. It empowers institutions to deliver smarter, inclusive, and future-ready education.
+								</p>
+								 
+								 
+								<button class="btn btn-primary"  data-aos="fade-up" data-aos-delay="150" style="transform: scale(1);">Get Started Now →</button> 
+							</div>
+						</div>
+					</div>
+				</div>
+        
+			</div>
+		</div>
+	</section>-->
+	<!--third-section-end-->
+ <div class="div_sect"></div>
+		<!---fifth--section-start-->
+	 
+	<section class="fifth-section py-5">
+		<div class="container">
+			<div class="row"> 
+			<div class="col-lg-6 col-sm-12 col-md-12 py-5"  data-aos="zoom-in-up" data-aos-delay="300">
+					<img src="images/222.jpg" class="img-fluid w-100" alt="">
+					
+				</div>
+				<div class="col-lg-6 col-sm-12 col-md-12 py-5"> 
+                    <h1 class="mb-1"  data-aos="fade-up" data-aos-delay="210" Style="margin:0px;">Education Solutions</h1>
+                    <p data-aos="fade-up" data-aos-delay="210">We provide end-to-end education solutions tailored for K–12 schools, higher education institutions, and corporate learning environments. Our services include:</p> 
+					<ul  data-aos="fade-up" data-aos-delay="290">
+						<li><strong>Digital Learning Platforms</strong>- LMS setup, content development, and integration.</li>
+						<li><strong>Curriculum & Instructional Design</strong>- Standards-aligned curriculum, eLearning modules, and assessments.</li>
+						<li><strong>Teacher Training & Professional Development</strong>- Workshops, coaching, and micro-credentialing.</li>
+						<li><strong>EdTech Implementation</strong>- Deployment, training, and ongoing support for technology tools.</li>
+						<li><strong>Data & Analytics</strong>-Insights that drive personalized learning, retention, and performance improvement.</li>
+					</ul>
+					<a href="Education_Solutions.html" class="btn btn-primary btn-primary2 ml-3" data-aos="fade-up" data-aos-delay="300" style="transform: scale(1);">Explore Features Now →</a>  
+					 
+					
+					</div> 
+				
+			</div> 
+		</div>
+	</section>
+	<!--fifth-section-end-->
+	
+    <div class="div_sect"></div>
+	<!--testimonial start-->
+ 
+ 
+	<section class="testimonials py-5">
+        <div class="container">
+		<div class="row">
+		<div class="title">
+						<h1>Testimonials</h1> 
+						<br><br>
+					</div>
+			<div class="col-lg-12 col-sm-12 col-md-12">
+				<div class="testimonial_tesx">
+					 
+					<div class="owl-carousel carousel9">
+					
+              <!-- Single Starts -->
+                    <div class="item">
+						  <div class="icon">
+						  <figure class="text-start">
+								<img class="img-fluid" src="images/cote.png" Style="width:20px;height:20px;" />
+							</figure>
+											  
+						  </div>
+						  <p>With PGS AI’s NeuraEdge, we've been able to deploy an on-premise AI assistant that handles policy queries, compliance checks, and document processing at lightning speed. The platform’s ability to integrate seamlessly with our internal tools while meeting our security and uptime requirements is unmatched.</p>
+						  <div class="profile">
+							  <img src="https://images.unsplash.com/photo-1521225099409-8e1efc95321d?ixlib=rb-1.2.1&auto=format&fit=crop&h=153&q=80" alt="" class="userImg img-fluid">
+							  <h3 class="name">Founder, EduFuture Schools</h3>
+							  <p class="post">EduFuture Schools - Large Private School Chain</p>
+						  </div>
+					</div>
+              <!-- Single Ends -->
+					 
+					<div class="item">
+						  <div class="icon">
+						  <figure class="text-start">
+								<img class="img-fluid" src="images/cote.png" Style="width:20px;height:20px;" />
+							</figure>
+											  
+						  </div>
+						  <p>With PGS AI’s NeuraEdge, we've been able to deploy an on-premise AI assistant that handles policy queries, compliance checks, and document processing at lightning speed. The platform’s ability to integrate seamlessly with our internal tools while meeting our security and uptime requirements is unmatched.</p>
+						  <div class="profile">
+							  <img src="https://images.unsplash.com/photo-1521225099409-8e1efc95321d?ixlib=rb-1.2.1&auto=format&fit=crop&h=153&q=80" alt="" class="userImg img-fluid">
+							  <h3 class="name">Founder, EduFuture Schools</h3>
+							  <p class="post">EduFuture Schools - Large Private School Chain</p>
+						  </div>
+					</div>
+            </div>
+				</div>
+				 
+			</div>
+		</div>
+           
+           
+        </div>
+    </section>
+ 
+	<div class="div_sect"></div>
+	<!-- fifth  Start 
+ 
+ 
+<!-- Footer Start -->	
+
+
+<footer class="fotter-section">
+	<div class="container">
+		<div class="row">
+			 
+				<div class="col-lg-3 col-sm-12 col-md-12">
+				<div class="footer_one_col">
+				<div class="logo-part">
+					  <img src="images/logo.png" class="logo-footer" >
+					 
+					 <br> <br>
+                  <p>From enterprises to government departments, we deliver content automation systems that ensure accuracy, efficiency, and consistency at scale.</p>
+				  
+		     </div>			   
+				 
+			</div>
+				</div>
+				<div class="col-lg-3 col-sm-12 col-md-12"> 
+					<div class="footer_two_col">
+						<div class="footer_three_col">
+						 <h6> Short links</h6> 
+							<p><a href="index.html">Home</a></p>
+							<p><a href="about.html">About</a></p> 
+							<p><a href="#">Team</a></p> 
+						</div>  
+					</div>  
+				</div> 
+					<div class="col-lg-3 col-sm-12 col-md-12"> 
+						<div class="footer_two_col">
+							<div class="footer_three_col">
+							 <h6> Help links</h6>  
+								<p><a href="privacy_policy.html">Privacy Policy</a></p>  
+								<p><a href="contact_us.html">Contact</a></p> 
+							</div>  
+						</div>  
+					</div> 
+				<div class="col-lg-3 col-sm-12 col-md-12">
+					  <div class="footer_four_col">
+						   <h6> PGS AI</h6> 
+						   <p></p> 
+						   <p><i class="fa-regular fa-envelope"></i>  <a href="mailto:info@mypgsai.com" style="color:#fff; text-decoration:none;"> info@mypgsai.com</a></p>
+						   <p><i class="fa-solid fa-phone"></i>  <a href="tel:+91 92490 92795" style="color:#fff; text-decoration:none;"> +91 92490 92795</a></p>
+						   <div class="icons">
+				  <a href="https://www.facebook.com/MyPGSGlobal" style="color:#fff; padding: 4px;"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.instagram.com/pgs.global/" style="color:#fff; padding: 4px;"><i class="fa-brands fa-instagram"></i></a><a href="https://www.youtube.com/@pgsAI" stlobyle="color:#fff; padding: 4px;"><i class="fa-brands fa-youtube"></i></a>
+               </div>
+						</div>   
+				</div> 					
+				</div> 
+				<br><br>
+				<div class="row">
+				<div class="col-lg-12 col-sm-12 col-md-12">
+					<div class="part-cnter" style="text-align:center;"> 
+                  <p>© 2025 | All rights reserved | PGS AI</p>
+               </div>
+					</div>			   
+				</div>
+			</div>
+		 
+</footer> 
+ 
+
+
+<!-- End of .container -->
+    <!-- Back to Top -->
+    <a href="#" onclick="topFunction()" id="myBtn" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Optional JavaScript -->
+	 <script> 
+	 
+	 var counter = document.querySelectorAll(".counter")
+
+window.addEventListener("load", function() {
+  counter.forEach(function(k, v) {
+	  
+	  var start = counter[v].getAttribute('data-count-start')
+	  var end = counter[v].getAttribute('data-count-end')
+	  var speed = counter[v].getAttribute('data-speed')
+
+	  setInterval(function() {
+		  start++;
+		  if(start > end) {
+			return false;
+		  }
+		  counter[v].innerText = start;
+
+		}, speed)
+  })
+  
+}, false)
+			 let count = document.querySelectorAll(".count")
+			let arr = Array.from(count) 
+			arr.map(function(item){
+			  let startnumber = 0
+
+			  function counterup(){
+			  startnumber++
+			  item.innerHTML= startnumber
+			   
+			  if(startnumber == item.dataset.number){
+				  clearInterval(stop)
+			  }
+			}
+
+			let stop =setInterval(function(){
+			  counterup()
+			},50)
+
+			});
+			var owl = $('.carousel9');
+			owl.owlCarousel({ 
+				loop: true,
+				nav: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 6000,
+        autoplayHoverPause: true,
+				responsive: {
+					0: { items: 1 },
+					576: { items: 1 },
+					992: { items: 1 }
+				}
+			}); 
+			 
+			// Get the button
+				let mybutton = document.getElementById("myBtn");
+
+				// When the user scrolls down 20px from the top of the document, show the button
+				window.onscroll = function() {scrollFunction()};
+
+				function scrollFunction() {
+				  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					mybutton.style.display = "block";
+				  } else {
+					mybutton.style.display = "none";
+				  }
+				}
+
+				// When the user clicks on the button, scroll to the top of the document
+				function topFunction() {
+				  document.body.scrollTop = 0;
+				  document.documentElement.scrollTop = 0;
+				}
+          </script>
+		  
+ 
+ 
+  
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js" ></script>
+	  <script src="dist/aos.js"></script>
+    <script>
+      AOS.init({
+        easing: 'ease-in-out-sine'
+      });
+
+      setInterval(addItem, 300);
+
+      var itemsCounter = 1;
+      var container = document.getElementById('aos-demo');
+
+      function addItem () {
+        if (itemsCounter > 42) return;
+        var item = document.createElement('div');
+        item.classList.add('aos-item');
+        item.setAttribute('data-aos', 'fade-up');
+        item.innerHTML = '<div class="aos-item__inner"><h3>' + itemsCounter + '</h3></div>';
+        //container.appendChild(item);
+        itemsCounter++;
+      }
+    </script>
+  </body>
+</html>

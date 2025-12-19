@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Floating Halo Globe — Three.js</title>
+  <style>
+    html,body { height:100%; margin:0; background: #000; font-family: system-ui,Segoe UI,Roboto,Helvetica,Arial;}
+    #canvas { display:block; width:100%; height:100vh; }
+    .credit { position: absolute; left:12px; bottom:12px; color: rgba(255,255,255,0.6); font-size:12px; }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="credit">Floating Halo Globe — three.js</div>
+
+  <!-- three.js and extras via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.18.0/dist/lil-gui.min.js"></script>
+
+  <script>
+  // --- Setup renderer, scene, camera ---
+  const canvas = document.getElementById('canvas');
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:false});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputEncoding = THREE.sRGBEncoding;
+
+  const scene = new THREE.Scene();
+
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
+  camera.position.set(0, 0, 6);
+
+  // Controls
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.minDistance = 2.4;
+  controls.maxDistance = 15;
+  controls.rotateSpeed = 0.6;
+
+  // --- Lighting ---
+  const hemi = new THREE.HemisphereLight(0xffffff, 0x222233, 0.6);
+  scene.add(hemi);
+
+  const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+  dir.position.set(5, 3, 5);
+  scene.add(dir);
+
+  // --- Globe (simple textured sphere) ---
+  // If you want to use a texture, drop in a texture URL. We'll procedurally color it here.
+  const globeGeo = new THREE.SphereGeometry(1.5, 64, 64);
+
+  // Basic color map made with noise-like vertex displacement in fragment for subtle continents
+  const globeMat = new THREE.MeshStandardMaterial({
+    metalness: 0.05,
+    roughness: 0.7,
+    color: 0x0e2a3a,
+    emissive: 0x001122,
+    emissiveIntensity: 0.1,
+  });
+
+  const globe = new THREE.Mesh(globeGeo, globeMat);
+  globe.rotation.z = 0.2;
+  scene.add(globe);
+
+  // --- Atmosphere shader (soft rim light) ---
+  const atmosphereGeo = new THREE.SphereGeometry(1.52, 64, 64);
+  const atmosphereMat = new THREE.ShaderMaterial({
+    uniforms: {
+      c: { value: 0.8 }, // intensity
+      p: { value: 2.0 }, // falloff power
+      glowColor: { value: new THREE.Color(0x66ccff) },
+      viewVector: { value: camera.position }
+    },
+    vertexShader: `
+      varying vec3 vNormal;
+      varying vec3 vWorldPos;
+      void main() {
+        vNormal = normalize(normalMatrix * normal);
+        vec4 worldPos = modelMatrix * vec4(position, 1.0);
+        vWorldPos = worldPos.xyz;
+        gl_Position = projectionMatrix * viewMatrix * worldPos;
+      }
+    `,
+    fragmentShader: `
+      uniform vec3 glowColor;
+      uniform float c;
+      uniform float p;
+      uniform vec3 viewVector;
+      varying vec3 vNormal;
+      varying vec3 vWorldPos;
+      void main() {
+        float intensity = pow(c - dot(normalize(vNormal), normalize(viewVector - vWorldPos)), p);
+        gl_FragColor = vec4(glowColor, intensity);
+      }
+    `,
+    blending: THREE.AdditiveBlending,
+    transparent: true,
+    side: THREE.FrontSide
+  });
+
+  const atmosphere = new THREE.Mesh(atmosphereGeo, atmosphereMat);
+  scene.add(atmosphere);
+
+  // --- Orbiting halo ring (thin torus with faded texture-like shader) ---
+  const ringGeo = new THREE.TorusGeometry(2.1, 0.03, 16, 200);
+  const ringMat = new THREE.ShaderMaterial({
+    uniforms: {
+      time: { value: 0 },
+      opacity: { value: 0.6 },
+      color: { value: new THREE.Color(0x99d6ff) }
+    },
+    vertexShader: `
+      varying vec2 vUv;
+      varying vec3 vPos;
+      void main(){
+        vUv = uv;
+        vPos = position;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float time;
+      uniform float opacity;
+      uniform vec3 color;
+      varying vec2 vUv;
+      void main(){
+        float stripe = smoothstep(0.48, 0.5, abs(fract(vUv.x*10.0 + time*0.05)-0.5));
+        float alpha = (1.0 - vUv.y) * stripe * opacity;
+        gl_FragColor = vec4(color, alpha);
+      }
+    `,
+    transparent: true,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+
+  const ring = new THREE.Mesh(ringGeo, ringMat);
+  ring.rotation.x = 0.35;
+  scene.add(ring);
+
+  // --- Particle/starfield ---
+  const starCount = 1200;
+  const starsGeo = new THREE.BufferGeometry();
+  const positions = new Float32Array(starCount * 3);
+  const sizes = new Float32Array(starCount);
+
+  for (let i = 0; i < starCount; i++) {
+    const r = THREE.MathUtils.randFloat(8, 60);
+    const theta = THREE.MathUtils.randFloat(0, Math.PI * 2);
+    const phi = THREE.MathUtils.randFloat(0, Math.PI);
+    const x = r * Math.sin(phi) * Math.cos(theta);
+    const y = r * Math.sin(phi) * Math.sin(theta);
+    const z = r * Math.cos(phi);
+    positions[i*3] = x;
+    positions[i*3+1] = y;
+    positions[i*3+2] = z;
+    sizes[i] = THREE.MathUtils.randFloat(0.6, 2.4);
+  }
+
+  starsGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  starsGeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+  const starMat = new THREE.PointsMaterial({
+    size: 0.06,
+    sizeAttenuation: true,
+    transparent: true,
+    opacity: 0.9,
+    map: null,
+    color: 0xffffff,
+    depthWrite: false
+  });
+
+  // Use small built-in circle for points by creating a tiny canvas texture
+  const starCanvas = document.createElement('canvas');
+  starCanvas.width = 64; starCanvas.height = 64;
+  const sc = starCanvas.getContext('2d');
+  const grad = sc.createRadialGradient(32,32,2,32,32,32);
+  grad.addColorStop(0, 'rgba(255,255,255,1)');
+  grad.addColorStop(0.2, 'rgba(255,255,255,0.8)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
+  sc.fillStyle = grad; sc.fillRect(0,0,64,64);
+  starMat.map = new THREE.CanvasTexture(starCanvas);
+
+  const starPoints = new THREE.Points(starsGeo, starMat);
+  scene.add(starPoints);
+
+  // --- GUI + params ---
+  const params = {
+    rotateSpeed: 0.2,
+    ringSpeed: 0.18,
+    atmosphereIntensity: 0.9,
+    atmosphereColor: '#66ccff',
+    ringOpacity: 0.6,
+    autoRotate: true,
+    globeEmissiveIntensity: 0.08
+  };
+
+  const gui = new lil.GUI();
+  gui.add(params, 'rotateSpeed', 0, 1, 0.01).name('globe rotation');
+  gui.add(params, 'ringSpeed', 0, 1, 0.01).name('ring speed');
+  gui.add(params, 'atmosphereIntensity', 0.0, 2.0, 0.01).name('atmosphere intensity').onChange(v => atmosphereMat.uniforms.c.value = v);
+  gui.addColor(params, 'atmosphereColor').name('atmosphere color').onChange(v => atmosphereMat.uniforms.glowColor.value.set(v));
+  gui.add(params, 'ringOpacity', 0, 1, 0.01).onChange(v => ringMat.uniforms.opacity.value = v).name('ring opacity');
+  gui.add(params, 'globeEmissiveIntensity', 0, 1, 0.01).onChange(v => globeMat.emissiveIntensity = v).name('globe glow');
+  gui.add(params, 'autoRotate').name('auto rotate');
+
+  // --- Resize handling ---
+  window.addEventListener('resize', onWindowResize);
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+
+  // --- Animation loop ---
+  let clock = new THREE.Clock();
+  function animate() {
+    const dt = clock.getDelta();
+    const t = clock.getElapsedTime();
+
+    // rotate globe slowly
+    if (params.autoRotate) globe.rotation.y += dt * params.rotateSpeed;
+
+    // ring orbit (rotate + slow precession)
+    ring.rotation.z += dt * params.ringSpeed * 0.6;
+    ring.rotation.y = 0.2 * Math.sin(t * 0.2);
+
+    // stars: slow drift
+    starPoints.rotation.y += dt * 0.01;
+
+    // update atmosphere viewVector uniform
+    atmosphereMat.uniforms.viewVector.value.copy(camera.position);
+
+    // subtle pulsation of atmosphere
+    atmosphereMat.uniforms.c.value = params.atmosphereIntensity + 0.08 * Math.sin(t * 0.7);
+
+    // ring shader time update
+    ringMat.uniforms.time.value = t;
+
+    controls.update();
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // --- Tips to extend ---
+  // 1) Replace globe material with a textured earth (use TextureLoader + .map).
+  // 2) Add post-processing (bloom) for stronger glow (requires EffectComposer).
+  // 3) Add clickable hotspots on globe using Raycaster to show info/tooltips.
+  // 4) Swap star field with layered parallax clouds for depth.
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	
+	<!-- Favicon -->
+	
+    <link href="images/fav.png" rel="icon">
+
+	<!-- Google Web Fonts -->
+	
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		
+	<!-- Bootstrap CSS --> 
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
+  <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/> 
+     
+	  <link rel="stylesheet" href="css/custom.css"> 
+	      <link rel="stylesheet" href="assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/owlcarousel/assets/owl.theme.default.min.css">
+	    <script src="assets/vendors/jquery.min.js"></script>
+		<script src="assets/owlcarousel/owl.carousel.js"></script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" /> 
+
+        <!-- Icon Font Stylesheet -->
+         
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <title>PGS-AI</title>
+ <style>
+
+ .banner h3{
+ font-size: 48px !important;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #f1f5f9 0%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+ }
+ .btn-1.button.button1{
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+ /* Float four columns side by side */
+.column1 {
+  float: left;
+  width: 25%;
+  padding: 0 5px;
+}
+
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column1 {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+/* Style the counter cards */
+.card1 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  //background-color: #444;
+  color: white;
+}
+.card1 h3{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #3b82f6;
+    margin-bottom: 0.5rem;
+}
+.card1 p{
+color: #cbd5e1;
+    font-size: 0.875rem;
+}
+.fa {font-size:50px;}
+
+.col-sect2{
+display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.75rem;
+    border: 1px solid #475569;
+}
+.card2{
+    padding: 0.2rem 3.2px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid #475569;
+    border-radius: 0.75rem;
+    transition: all 250ms;
+    cursor: pointer;
+}
+.card2 h5{
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #f1f5f9;
+}
+.card2 p{
+ color: #cbd5e1;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+.feature-icon{
+	width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.card2:hover{
+transform: translateY(-8px);
+    border-color: #3b82f6;
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.15);
+}
+.sec-sect1 h1{
+	color: #fff;
+    font-size: 28px;
+    font-weight: 500;
+	font-family: "Sofia", sans-serif;
+	 font-size: 1.75rem;
+    text-align: center;
+}
+ .sect-op p{
+ 	color: #fff;
+    font-size: 28px;
+    font-weight: 500;
+	font-family: "Sofia", sans-serif;
+	font-size: 15px;
+    text-align: center;
+	margin-bottom:40px;
+ }
+.sect-op {
+	margin-bottom: 40px;
+ }
+ .cta-box{
+     background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    padding: 3rem 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 0 60px rgba(37, 99, 235, 0.3);
+ }
+.cta-section {
+    padding: 3rem 0;
+    text-align: center;
+    background: #0a0a0a;
+	padding-top:40px;
+}
+.cta-box{
+    margin: 50px 0;
+}
+.cta-box h2
+ {
+   color:#fff;
+    margin-bottom: 1.5rem;
+}
+.cta-box p {
+color:#fff;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0.95;
+}
+.btn.btn-primary{
+	background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: white;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+	border:none;
+}
+ul>li{
+	color: #939393;
+    font-family: "Sofia", sans-serif; 	
+}
+.seconds.sec-sect h3{
+    color: #fff;
+    font-size: 19px;
+}
+</style>
+ </style>
+  </head>
+  <body>
+   <!-- Spinner Start 
+        <div id="spinner" class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>-->
+        <!-- Spinner End -->
+<header class="header sticky-top">
+	  <div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+		  
+		  <!-- Logo -->
+		  <a class="navbar-brand" href="index.html">
+			<img src="images/logo.png" class="logo-footer" alt="Logo">
+		  </a>
+
+		  <!-- Toggler -->
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			 
+			 <div class="respMenu icon" style="font-size:30px;cursor:pointer" onclick="myFunction()"><i class="fa-solid fa-bars"></i>
+		  </button>
+
+		  <!-- Menu -->
+		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav ml-auto">
+
+			  <li class="nav-item active">
+				<a class="nav-link" href="index.html">Home</a>
+			  </li>
+
+			  <li class="nav-item dropdown">
+				<a class="nav-link page-scroll" href="about.html">about-us</a>
+				 
+			  </li>
+
+			  <li class="nav-item">
+				<a class="nav-link page-scroll" href="services.html">Services</a>
+			  </li>
+
+			  <li class="nav-item">
+				<a class="nav-link page-scroll" href="courses.html">Courses</a>
+			  </li>
+
+			  <li class="nav-item">
+				<a class="nav-link page-scroll" href="contact_us.html">Contact</a>
+			  </li>
+
+			</ul>
+		  </div>
+
+		  <!-- Button -->
+		  <a href="#" class="btn btn-primary btn-primary12 ml-3">Get Started</a>
+		  
+		</nav>
+	  </div>
+	</header>
+
+ 
+  <!--header -end-->
+   <!--hero section Start-->
+ 
+ 
+ <!--hero section Start-->
+ <section class="banner hero-section">
+    <div class="container">
+      <div class="row align-items-center">
+          <div class="col-md-5 col-lg-5 order-md-2">
+              
+			    <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg" class="hero-banner-svg">
+                <defs>
+                    <style>
+                        @keyframes flowPath {
+                            0% { stroke-dashoffset: 1000; }
+                            100% { stroke-dashoffset: 0; }
+                        }
+                        
+                        @keyframes blink {
+                            0%, 100% { opacity: 1; }
+                            50% { opacity: 0.3; }
+                        }
+                        
+                        @keyframes pulse {
+                            0%, 100% { r: 8; opacity: 1; }
+                            50% { r: 12; opacity: 0.6; }
+                        }
+                        
+                        .circuit-line {
+                            stroke: url(#gradientTeal);
+                            stroke-width: 3;
+                            fill: none;
+                            stroke-linecap: round;
+                            stroke-dasharray: 1000;
+                            animation: flowPath 8s ease-in-out infinite;
+                        }
+                        
+                        .circuit-line-secondary {
+                            stroke: url(#gradientPurple);
+                            stroke-width: 2.5;
+                            fill: none;
+                            stroke-linecap: round;
+                            stroke-dasharray: 800;
+                            animation: flowPath 10s ease-in-out infinite;
+                        }
+                        
+                        .node-center {
+                            fill: url(#gradientCenter);
+                            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8));
+                        }
+                        
+                        .node-major {
+                            fill: url(#gradientNode);
+                            animation: blink 2s ease-in-out infinite;
+                        }
+                        
+                        .node-minor {
+                            fill: url(#gradientNodeMinor);
+                            animation: blink 3s ease-in-out infinite;
+                        }
+                        
+                        .text-ai {
+                            font-size: 120px;
+                            font-weight: 900;
+                            fill: white;
+                            letter-spacing: -5px;
+                            filter: drop-shadow(0 0 30px rgba(6, 182, 212, 0.6));
+							    font-family: "Sofia", sans-serif;
+                        }
+                    </style>
+                    
+                    <linearGradient id="gradientTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0891b2;stop-opacity:0.8" />
+                    </linearGradient>
+                    
+                    <linearGradient id="gradientPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.8" />
+                    </linearGradient>
+                    
+                    <linearGradient id="gradientNode" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+                    </linearGradient>
+                    
+                    <linearGradient id="gradientNodeMinor" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.6" />
+                    </linearGradient>
+                    
+                    <radialGradient id="gradientCenter">
+                        <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2563eb;stop-opacity:0.8" />
+                    </radialGradient>
+                </defs>
+                
+                <circle cx="0" cy="0" r="0" fill="rgba(6, 182, 212, 0.05)" />
+                <circle cx="0" cy="0" r="0" fill="rgba(37, 99, 235, 0.03)" />
+                
+                <!-- Upper left branch -->
+                <path class="circuit-line" d="M 150 80 L 250 100 L 280 140 L 320 160 L 380 180" style="animation-delay: 0s"/>
+                <path class="circuit-line-secondary" d="M 200 60 L 270 85 L 310 120 L 350 165" style="animation-delay: 0.5s"/>
+                
+                <!-- Upper right branch -->
+                <path class="circuit-line" d="M 850 80 L 750 100 L 720 140 L 680 160 L 620 180" style="animation-delay: 1s"/>
+                <path class="circuit-line-secondary" d="M 800 60 L 730 85 L 690 120 L 650 165" style="animation-delay: 1.5s"/>
+                
+                <!-- Lower left branch -->
+                <path class="circuit-line" d="M 150 320 L 250 300 L 280 260 L 320 240 L 380 220" style="animation-delay: 2s"/>
+                <path class="circuit-line-secondary" d="M 200 340 L 270 315 L 310 280 L 350 235" style="animation-delay: 2.5s"/>
+                
+                <!-- Lower right branch -->
+                <path class="circuit-line" d="M 850 320 L 750 300 L 720 260 L 680 240 L 620 220" style="animation-delay: 3s"/>
+                <path class="circuit-line-secondary" d="M 800 340 L 730 315 L 690 280 L 650 235" style="animation-delay: 3.5s"/>
+                
+                <!-- Center vertical paths -->
+                <path class="circuit-line" d="M 500 80 L 500 160" style="animation-delay: 0.3s"/>
+                <path class="circuit-line" d="M 500 240 L 500 320" style="animation-delay: 2.3s"/>
+                <path class="circuit-line-secondary" d="M 480 120 L 520 120 L 520 150 L 480 150" style="animation-delay: 1s"/>
+                
+                <!-- Horizontal connecting paths -->
+                <path class="circuit-line-secondary" d="M 400 200 L 600 200" style="animation-delay: 1.5s; stroke-width: 2;"/>
+                <path class="circuit-line" d="M 380 190 L 620 190" style="animation-delay: 2s; stroke-width: 2;"/>
+                
+                <!-- Major nodes -->
+                <circle class="node-major" cx="150" cy="80" r="8" style="animation-delay: 0s"/>
+                <circle class="node-major" cx="850" cy="80" r="8" style="animation-delay: 1s"/>
+                <circle class="node-major" cx="150" cy="320" r="8" style="animation-delay: 2s"/>
+                <circle class="node-major" cx="850" cy="320" r="8" style="animation-delay: 3s"/>
+                <circle class="node-major" cx="380" cy="180" r="10" style="animation-delay: 0.5s"/>
+                <circle class="node-major" cx="620" cy="180" r="10" style="animation-delay: 1.5s"/>
+                <circle class="node-major" cx="380" cy="220" r="10" style="animation-delay: 2.5s"/>
+                <circle class="node-major" cx="620" cy="220" r="10" style="animation-delay: 3.5s"/>
+                
+                <!-- Minor nodes -->
+                <circle class="node-minor" cx="250" cy="100" r="5" style="animation-delay: 0.2s"/>
+                <circle class="node-minor" cx="280" cy="140" r="5" style="animation-delay: 0.4s"/>
+                <circle class="node-minor" cx="320" cy="160" r="6" style="animation-delay: 0.6s"/>
+                <circle class="node-minor" cx="750" cy="100" r="5" style="animation-delay: 1.2s"/>
+                <circle class="node-minor" cx="720" cy="140" r="5" style="animation-delay: 1.4s"/>
+                <circle class="node-minor" cx="680" cy="160" r="6" style="animation-delay: 1.6s"/>
+                <circle class="node-minor" cx="250" cy="300" r="5" style="animation-delay: 2.2s"/>
+                <circle class="node-minor" cx="280" cy="260" r="5" style="animation-delay: 2.4s"/>
+                <circle class="node-minor" cx="320" cy="240" r="6" style="animation-delay: 2.6s"/>
+                <circle class="node-minor" cx="750" cy="300" r="5" style="animation-delay: 3.2s"/>
+                <circle class="node-minor" cx="720" cy="260" r="5" style="animation-delay: 3.4s"/>
+                <circle class="node-minor" cx="680" cy="240" r="6" style="animation-delay: 3.6s"/>
+                
+                <!-- Center nodes -->
+                <circle class="node-major" cx="500" cy="200" r="24" style="animation: blink 1.5s ease-in-out infinite;"/>
+                <circle class="node-major" cx="500" cy="200" r="20" fill="url(#gradientCenter)" style="animation: pulse 2s ease-in-out infinite; opacity: 0.8;"/>
+                <circle cx="500" cy="200" r="16" fill="white" opacity="0.3"/>
+                
+                <text class="text-ai" x="500" y="230" text-anchor="middle" font-family="Sofia, sans-serif">AI</text>
+            </svg>
+          </div>
+            <div class="col-md-7 col-lg-7 order-md-1 mt-5 mt-md-0">
+			<div class="text_section animate__animated animate__slideInDown aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                <h3  data-aos="fade-up" data-aos-delay="150">services</h3>
+                <p class="mt-3" data-aos="fade-up" data-aos-delay="150">Where Cutting-Edge AI Meets Real-World Impact</p>  <br>
+					
+				<button class="btn btn-primary"  data-aos="fade-up" data-aos-delay="150" style="transform: scale(1);">Get Started Now →</button> 
+				</div> 
+            </div>
+        </div>
+    </div>
+</section>
+ <div class="div_sect"></div>
+	<!--<section class="hero-section">-->
+	<section class="seconds sec-sect">
+	<div class="container">
+			<div class="row"> 
+			<div class="col-lg-12 col-sm-12 col-md-12">
+				<div class="what-we-do-sect">
+				<h3>Transforming Learning With Intelligent Ed-Tech Solutions</h3>
+							<p>Our Ed-Tech technology ecosystem is built to enhance learning outcomes through AI-driven personalization, automation, and analytics. We combine advanced digital tools with scalable cloud infrastructure to empower educators, institutions, and learners with seamless, interactive, and measurable learning experiences.</p>
+							 
+				</div> 
+			</div>   
+			</div>
+			<div class="row"> 
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				  <div class="col"  data-aos="fade-up" data-aos-delay="150">
+					<div class="card h-100">
+					  <img src="images/Intelligent_Content_Delivery.jpg" class="card-img-top" alt="...">
+					  <div class="card-body">
+						<h5 class="card-title">AI-Powered Learning Personalization</h5>
+						<p class="card-text">Adaptive engines analyze learner performance, behavior, and preferences to deliver customized content, assessments, and recommendations.</p>
+						 
+					  </div>
+					  
+					</div>
+				  </div>
+					  <div class="col" data-aos="fade-up" data-aos-delay="150">
+						<div class="card h-100">
+						  <img src="images/Seamless_Digital_Classrooms.jpg" class="card-img-top" alt="...">
+						  <div class="card-body">
+						   <h5 class="card-title">Seamless Digital Classrooms</h5>
+							<p class="card-text">Integrated virtual classrooms, LMS, and collaboration tools enable hybrid and remote learning with high scalability.</p>
+						  </div>
+						   
+						</div>
+					  </div>
+					  <div class="col" data-aos="fade-up" data-aos-delay="150">
+						<div class="card h-100">
+						    <img src="images/Secure_Compliant_Architecture.jpg" class="card-img-top" alt="...">
+						  <div class="card-body">
+							<h5 class="card-title">Secure & Compliant Architecture</h5>
+							<p class="card-text">Our systems are built with enterprise-grade security, ensuring privacy, data protection, and compliance with global regulations.</p>
+						  </div>
+						   
+						</div>
+					  </div>
+					</div>
+					<div class="row row-cols-1 row-cols-md-3 g-4">
+				  <div class="col" data-aos="fade-up" data-aos-delay="150">
+					<div class="card h-100">
+					  <img src="images/Intelligent_Content_Delivery.jpg" class="card-img-top" alt="...">
+					  <div class="card-body">
+						<h5 class="card-title">Intelligent Content Delivery</h5>
+						<p class="card-text">Our platforms support multimedia, gamified, and interactive content, optimizing learner engagement across devices.</p>
+						 
+					  </div>
+					   
+					</div>
+				  </div>
+					  <div class="col" data-aos="fade-up" data-aos-delay="150">
+						<div class="card h-100">
+						  <img src="images/Automated_Academic_Operations.jpg" class="card-img-top" alt="...">
+						  <div class="card-body">
+						   <h5 class="card-title">Automated Academic Operations</h5>
+											<p class="card-text">Integrated virtual classrooms, LMS, and collaboration tools enable hybrid and remote learning with high scalability.</p>
+						  </div>
+						   
+						</div>
+					  </div>
+					  <div class="col" data-aos="fade-up" data-aos-delay="150">
+						<div class="card h-100">
+						  <img src="images/Smart_Analytics_Insights.jpg" class="card-img-top" alt="...">
+						  <div class="card-body">
+							<h5 class="card-title">Smart Analytics & Insights</h5>
+							<p class="card-text">From attendance to grading workflows, our automation tools reduce administrative load and streamline academic processes.</p>
+						  </div>
+						  
+						</div>
+					  </div>
+					</div>  
+			</div>
+		</div>
+	</section>
+  <!--fourth-section-end-->
+<section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Beginning of a Change</h2>
+                <p>Join thousands of educators revolutionizing education with AI-powered learning</p>
+                <button class="btn btn-primary" style="transform: scale(1);">Start Your Journey Today</button>
+            </div>
+        </div>
+    </section>
+ 
+  <div class="div_sect"></div>
+<!-- Footer Start -->	
+
+
+<footer class="fotter-section">
+	<div class="container">
+		<div class="row">
+			 
+				<div class="col-lg-3 col-sm-12 col-md-12">
+				<div class="footer_one_col">
+				<div class="logo-part">
+					  <img src="images/logo.png" class="logo-footer" >
+					 
+					 <br> <br>
+                  <p>From enterprises to government departments, we deliver content automation systems that ensure accuracy, efficiency, and consistency at scale.</p>
+				  
+		     </div>			   
+				 
+			</div>
+				</div>
+				<div class="col-lg-3 col-sm-12 col-md-12"> 
+					<div class="footer_two_col">
+						<div class="footer_three_col">
+						 <h6> Short links</h6> 
+							<p><a href="index.html">Home</a></p>
+							<p><a href="about.html">About</a></p> 
+							<p><a href="#">Team</a></p> 
+						</div>  
+					</div>  
+				</div> 
+					<div class="col-lg-3 col-sm-12 col-md-12"> 
+						<div class="footer_two_col">
+							<div class="footer_three_col">
+							 <h6> Help links</h6>  
+								<p><a href="privacy_policy.html">Privacy Policy</a></p>  
+								<p><a href="contact_us.html">Contact</a></p> 
+							</div>  
+						</div>  
+					</div> 
+				<div class="col-lg-3 col-sm-12 col-md-12">
+					  <div class="footer_four_col">
+						   <h6> PGS Global</h6> 
+						   <p><i class="fa-solid fa-map-location"></i> PGS Global Kochi Campus, Chittoor Road, Ernakulam, Kerala, India - 682035</p> 
+						   <p><i class="fa-regular fa-envelope"></i>  <a href="mailto:info@mypgsglobal.com" style="color:#fff; text-decoration:none;"> info@mypgsglobal.com</a></p>
+						   <p><i class="fa-solid fa-phone"></i>  <a href="tel:+91 92490 92795" style="color:#fff; text-decoration:none;"> +91 92490 92795</a></p>
+						   <div class="icons">
+				  <a href="https://www.facebook.com/MyPGSGlobal" style="color:#fff; padding: 4px;"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.instagram.com/pgs.global/" style="color:#fff; padding: 4px;"><i class="fa-brands fa-instagram"></i></a><a href="https://www.youtube.com/@pgsglobal" style="color:#fff; padding: 4px;"><i class="fa-brands fa-youtube"></i></a>
+               </div>
+						</div>   
+				</div> 					
+				</div> 
+				<br><br>
+				<div class="row">
+				<div class="col-lg-12 col-sm-12 col-md-12">
+					<div class="part-cnter" style="text-align:center;"> 
+                  <p>© 2025 | All rights reserved | PGS Global</p>
+               </div>
+					</div>			   
+				</div>
+			</div>
+		 
+</footer> 
+    <!-- Back to Top -->
+    <a href="#" onclick="topFunction()" id="myBtn" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Optional JavaScript -->
+	 <script> 
+ 
+			var owl = $('.owl-carousel');
+			owl.owlCarousel({
+				items: 2,
+				loop: true,
+				margin: 10,
+				autoplay: true,
+				autoplayTimeout: 6000,
+				autoplayHoverPause: true,
+				responsive: {
+					0: { items: 1 },
+					576: { items: 1 },
+					992: { items: 2 }
+				}
+			}); 
+			 
+			// Get the button
+				let mybutton = document.getElementById("myBtn");
+
+				// When the user scrolls down 20px from the top of the document, show the button
+				window.onscroll = function() {scrollFunction()};
+
+				function scrollFunction() {
+				  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					mybutton.style.display = "block";
+				  } else {
+					mybutton.style.display = "none";
+				  }
+				}
+
+				// When the user clicks on the button, scroll to the top of the document
+				function topFunction() {
+				  document.body.scrollTop = 0;
+				  document.documentElement.scrollTop = 0;
+				}
+          </script>
+		  
+ 
+ 
+  
+ <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js" ></script>
+	  <script src="../dist/aos.js"></script>
+    <script>
+      AOS.init({
+        easing: 'ease-in-out-sine'
+      });
+
+      setInterval(addItem, 300);
+
+      var itemsCounter = 1;
+      var container = document.getElementById('aos-demo');
+
+      function addItem () {
+        if (itemsCounter > 42) return;
+        var item = document.createElement('div');
+        item.classList.add('aos-item');
+        item.setAttribute('data-aos', 'fade-up');
+        item.innerHTML = '<div class="aos-item__inner"><h3>' + itemsCounter + '</h3></div>';
+        container.appendChild(item);
+        itemsCounter++;
+      }
+    </script>
+  </body>
+</html>
