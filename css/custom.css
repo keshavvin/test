@@ -273,7 +273,8 @@ font-size: 65px !important;
 }
 .hero-section{
  //padding: 5rem 0;
-  background: linear-gradient(135deg, #000 0%, #1e3a5f 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #0a0a0a 100%);
+  
   color: white;
   position: relative;
   overflow: hidden;
@@ -490,7 +491,7 @@ label{
     font-family: "Sofia", sans-serif;
 }
 .banner{
-    background: url(../images/banner-bg.png) no-repeat right top #0a0a0a;
+    /*background: url(../images/banner-bg.png) no-repeat right top #0a0a0a;*/
     color: #FFF;
     text-transform: uppercase;
     padding: 50px 0 100px;
