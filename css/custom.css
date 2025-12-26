@@ -271,6 +271,17 @@ font-size: 65px !important;
     background-clip: text;
 	color: #02c0f0;
 }
+ .banner h3 span{
+font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    background:  #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+	color: #02c0f0;
+}
 .hero-section{
  //padding: 5rem 0;
   background: linear-gradient(135deg, #0a0a0a 0%, #0a0a0a 100%);
@@ -1011,7 +1022,7 @@ max-width: 100%;
 		line-height:30px;
 	}
 	.list1{
-		border-left: 2px solid #01c7ec;
+		border-left: 2px solid #01c7ec05;
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0px;
