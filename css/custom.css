@@ -899,7 +899,8 @@ display: grid;
     border-radius: 0.75rem;
     transition: all 250ms;
     cursor: pointer;
-	    height: 285px;
+	    height: auto;
+		min-height: 337px;
 
 }
 .card2 h5{

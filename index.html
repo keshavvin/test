@@ -334,8 +334,27 @@ body {
   background: #000;
 }
 .card1122{
-height: 403px;
+height: 553px;
 margin-bottom: 30px;
+}
+.card11223{
+height: 553px;
+margin-bottom: 30px;
+}
+.card23 {
+    padding: 0.2rem 3.2px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid #475569;
+    border-radius: 0.75rem;
+    transition: all 250ms;
+    cursor: pointer;
+       height: auto;
+    min-height: 285px;
+}
+.card23:hover {
+    transform: translateY(-8px);
+    border-color: #3b82f6;
+    box-shadow: 0 0 40px rgba(37, 99, 235, 0.15);
 }
 
 
@@ -615,10 +634,16 @@ border-left: 1px solid #fff;
     background: linear-gradient(90deg, transparent 0%, hsl(192.05deg 97.55% 48.04%) 50%, transparent 100%);
  
 }
- 
+ @media screen and (max-width: 1190px) {
+.card1122 {
+        height: 626px;
+        margin-bottom: 30px;
+    }
+}
 @media screen and (min-width: 1000px) and (max-width: 1390px) {
 .card1122 {
-    height: 500px;
+    height: auto;
+	min-height: 670px;
     margin-bottom: 30px;
 }
 .sec-sect2 { 
@@ -627,6 +652,7 @@ border-left: 1px solid #fff;
  
  
 }
+
 @media screen and (max-width: 969px) {
 .sec-sect2 { 
   height: auto; 
@@ -669,19 +695,26 @@ border-left: 1px solid #fff;
     border-color: #3b82f6;
     box-shadow: 0 0 40px 
 }
-.skill_development1{
-    position: relative;
-    overflow: hidden;
-    border-radius: .75rem;
-    background: linear-gradient(135deg, #ffffff0f, #ffffff05);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsla(0, 0%, 100%, .1);
-    transition-property: all;
-    transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-    transition-duration: .5s;
-    animation-duration: .5s;
-	padding: 35px;
+.skill_development14 h3{
+      font-size: 2.32rem !important;
+    font-weight: 500;
+    font-family: "Sofia", sans-serif;
+    font-size: 1.75rem;
+    text-align: center;
+    text-transform: uppercase;
+	    color: #ffff !important;
+}
+.skill_development14 h3 span{
+      font-size: 2.32rem !important;
+    font-weight: 500;
+    font-family: "Sofia", sans-serif;
+    font-size: 1.75rem;
+    text-align: center;
+    text-transform: uppercase;
+	    color: #02c7f2 !important;
+}
+.skill_development14 p{
+     text-align: center;
 }
 .skill_development1:hover{
     border-color: #ffcc0080;
@@ -710,6 +743,77 @@ border-left: 1px solid #fff;
 	    transform: translateY(-8px);
     border-color: #3b82f6;
     box-shadow: 0 0 40px 
+}
+ 
+ 
+ 
+@keyframes sf-fly-by-1 {
+    from {
+        transform: translateZ(-600px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateZ(0);
+        opacity: 0.5;
+    }
+}
+@keyframes sf-fly-by-2 {
+    from {
+        transform: translateZ(-1200px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateZ(-600px);
+        opacity: 0.5;
+    }
+}
+@keyframes sf-fly-by-3 {
+    from {
+        transform: translateZ(-1800px);
+        opacity: 0.5;
+    }
+    to {
+        transform: translateZ(-1200px);
+        opacity: 0.5;
+    }
+}
+.star-field {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 600px;
+    -webkit-perspective: 600px;
+    z-index: -1;
+}
+.star-field .layer {
+    box-shadow: -411px -476px #cccccc, 777px -407px #d4d4d4, -387px -477px #fcfcfc, -91px -235px #d4d4d4, 491px -460px #f7f7f7, 892px -128px #f7f7f7, 758px -277px #ededed, 596px 378px #cccccc, 647px 423px whitesmoke, 183px 389px #c7c7c7,
+        524px -237px #f0f0f0, 679px -535px #e3e3e3, 158px 399px #ededed, 157px 249px #ededed, 81px -450px #ebebeb, 719px -360px #c2c2c2, -499px 473px #e8e8e8, -158px -349px #d4d4d4, 870px -134px #cfcfcf, 446px 404px #c2c2c2,
+        440px 490px #d4d4d4, 414px 507px #e6e6e6, -12px 246px #fcfcfc, -384px 369px #e3e3e3, 641px -413px #fcfcfc, 822px 516px #dbdbdb, 449px 132px #c2c2c2, 727px 146px #f7f7f7, -315px -488px #e6e6e6, 952px -70px #e3e3e3,
+        -869px -29px #dbdbdb, 502px 80px #dedede, 764px 342px #e0e0e0, -150px -380px #dbdbdb, 654px -426px #e3e3e3, -325px -263px #c2c2c2, 755px -447px #c7c7c7, 729px -177px #c2c2c2, -682px -391px #e6e6e6, 554px -176px #ededed,
+        -85px -428px #d9d9d9, 714px 55px #e8e8e8, 359px -285px #cfcfcf, -362px -508px #dedede, 468px -265px #fcfcfc, 74px -500px #c7c7c7, -514px 383px #dbdbdb, 730px -92px #cfcfcf, -112px 287px #c9c9c9, -853px 79px #d6d6d6,
+        828px 475px #d6d6d6, -681px 13px #fafafa, -176px 209px #f0f0f0, 758px 457px #fafafa, -383px -454px #ededed, 813px 179px #d1d1d1, 608px 98px whitesmoke, -860px -65px #c4c4c4, -572px 272px #f7f7f7, 459px 533px #fcfcfc,
+        624px -481px #e6e6e6, 790px 477px #dedede, 731px -403px #ededed, 70px -534px #cccccc, -23px 510px #cfcfcf, -652px -237px whitesmoke, -690px 367px #d1d1d1, 810px 536px #d1d1d1, 774px 293px #c9c9c9, -362px 97px #c2c2c2,
+        563px 47px #dedede, 313px 475px #e0e0e0, 839px -491px #e3e3e3, -217px 377px #d4d4d4, -581px 239px #c2c2c2, -857px 72px #cccccc, -23px 340px #dedede, -837px 246px white, 170px -502px #cfcfcf, 822px -443px #e0e0e0, 795px 497px #e0e0e0,
+        -814px -337px #cfcfcf, 206px -339px #f2f2f2, -779px 108px #e6e6e6, 808px 2px #d4d4d4, 665px 41px #d4d4d4, -564px 64px #cccccc, -380px 74px #cfcfcf, -369px -60px #f7f7f7, 47px -495px #e3e3e3, -383px 368px #f7f7f7, 419px 288px #d1d1d1,
+        -598px -50px #c2c2c2, -833px 187px #c4c4c4, 378px 325px whitesmoke, -703px 375px #d6d6d6, 392px 520px #d9d9d9, -492px -60px #c4c4c4, 759px 288px #ebebeb, 98px -412px #c4c4c4, -911px -277px #c9c9c9;
+    transform-style: preserve-3d;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+}
+.star-field .layer:nth-child(1) {
+    animation: sf-fly-by-1 5s linear infinite;
+}
+.star-field .layer:nth-child(2) {
+    animation: sf-fly-by-2 5s linear infinite;
+}
+.star-field .layer:nth-child(3) {
+    animation: sf-fly-by-3 5s linear infinite;
 }
  </style> 
   </head>
@@ -785,13 +889,19 @@ border-left: 1px solid #fff;
  
 
  <!--hero section Start-->
- <section class="banner hero-section">
+ <section class="banner hero-section" >
     <div class="container">
       <div class="row align-items-center">
 	  
           <div class="col-md-12 col-lg-12 order-md-2">
               
 			   <div class="background-container">
+			   <div class="bg"></div>
+
+<div class="star-field">
+<div class="layer"></div>
+<div class="layer"></div>
+<div class="layer"></div>
 				<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8" style="opacity: 1; transform: none;position: relative; overflow: hidden; border-radius: .75rem; background: linear-gradient(135deg, #ffffff0f, #ffffff05);  backdrop-filter: blur(20px); backdrop-filter: blur(20px); border: 1px solid hsla(0, 0%, 100%, .1);width: 100%; margin: 0 auto;">
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles w-4 h-4 text-primary"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path><path d="M20 3v4"></path><path d="M22 5h-4"></path><path d="M4 17v2"></path><path d="M5 18H3"></path></svg>
 				<span class="text-sm font-medium text-muted-foreground">UK-Recognised World-Class Education</span></div>
@@ -816,9 +926,158 @@ border-left: 1px solid #fff;
 				</div> 
             </div>
         </div>
+		</div>
     </div>
 </section>
 <div class="div_sect"></div>
+
+<!--third-section-start-->
+ 
+	 <section class="about-sect py-5">
+		<div class="container">
+			<div class="row"> 
+				<div class="container-fluid overflow-hidden py-5"  >
+					<div class="container py-5">
+						<div class="row g-5">
+							<div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
+								<div class="RotateMoveLeft skill_development14"  data-aos="fade-right" data-aos-delay="250">
+									 <h3>What <span>We Do</span></h3>
+									 <p>AI That Works. Skills That Last. Impact That Matters. We are a leading AI education and business solutions company. We help businesses, governments, and learners harness intelligent systems, develop future-ready skills, and turn AI potential into measurable, real-world results.</p>
+								</div>
+							</div>
+							
+						</div>
+						<br><br>
+						<div class="row g-5">
+						<div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+						<div class="card23 card11223">
+						  <div class="card-body"> 
+						   <h5 class="card-title2" data-aos-once="fade-up" data-aos-delay="210">AI Solutions & Automation</h5>
+							 <ul>
+								<li>AI readiness assessments and strategy</li>
+								<li>Intelligent automation for SMEs</li>
+								<li>Custom AI solutions for enterprises and public sector</li>
+								<li>Trusted AI solutions for government</li> 
+							 </ul>
+							 
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+						<div class="card23 card11223">
+						  <div class="card-body">  
+							<h5 class="card-title2" data-aos-once="fade-up" data-aos-delay="210">AI Education & Skill Development</h5>
+							<ul>
+								<li>K–12 AI literacy and teacher training</li>
+								<li>Industry-aligned, domain-specific AI courses and certifications</li>
+								<li>AI curriculum design and faculty enablement for higher education</li>
+								<li>Hands-on labs, real-world projects, and assessments</li> 
+							 </ul>  
+							 
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+						<div class="card23 card11223">
+						  <div class="card-body"> 
+							<h5 class="card-title2" data-aos-once="fade-up" data-aos-delay="210">Who We Serve</h5>
+							 <ul data-aos-once="fade-up" data-aos-delay="210">
+								<li>Students, employees and organisations</li>
+								<li>Schools and higher educational Institutions</li>
+								<li>SMEs & Enterprises</li>
+								<li>Governments and public sectors</li> 
+							</ul> 
+							 
+						  </div>
+						</div>
+					  </div>  
+						</div>
+						<div class="row g-5">
+						<div class="col-sm-12 col-lg-6 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+						<div class="card23 card11223">
+						  <div class="card-body"> 
+						   	<h5 class="card-title2">  Why We’re Different</h5>
+						<p style="color:#fff;">We don’t sell tools—we deliver outcomes.</p>
+						 <ul data-aos-once="fade-up" data-aos-delay="210">
+							<li>Measurable performance improvement</li>
+							<li>Sector-specific expertise</li>
+							<li>Practical solutions built for real-world constraints</li>
+							<li>Ethics, transparency, and compliance built in</li> 
+						</ul> 
+							 
+						  </div>
+						</div>
+					  </div>
+					  <div class="col-sm-12 col-lg-6 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+						<div class="card23 card11223">
+						  <div class="card-body">  
+						<h5 class="card-title2"> Our Impact</h5> 
+						<ul data-aos-once="fade-up" data-aos-delay="210">
+							<li>Future-ready students and work force</li>
+							<li>AI-enabled institutions</li>
+							<li>More efficient businesses</li>
+							<li>Smarter public services</li> 
+						</ul>  
+							 
+						  </div>
+						</div>
+					  </div>   
+						</div>
+					</div>
+				</div>
+        
+			</div>
+		</div>
+	</section> 
+	<!--third-section-end-->
+ <div class="div_sect"></div>
+    <div class="div_sect"></div>
+	<div class="line-gold mb-12"></div>	
+				<!---six--section-start-->
+	<!-- <div class="div_sect1"></div>
+	<section class="sec-sect sec-sect1 py-5" >
+		<div class="container "> 
+
+				<div class="row">
+					<div class="sect-op">
+					<br><br>
+						  
+					 
+					</div>
+				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+					<div class="card2 card1122">
+					  <div class="card-body">
+					  <div class="feature-icon"><img src="images/tray.png" style="width:50px;"></div>
+						
+						 
+					  </div>
+					</div>
+				  </div>
+				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="150" >
+					<div class="card2 card1122">
+					  <div class="card-body">
+					  <div class="feature-icon"><img src="images/different-routes.png" style="width:50px;"></div>
+						 
+						 
+					  </div>
+					</div>
+				  </div>
+				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="180" >
+					<div class="card2 card1122">
+					  <div class="card-body">
+					  <div class="feature-icon"><img src="images/comet.png" style="width:50px;"></div>
+						
+					 
+					  </div>
+					</div>
+				  </div>
+				    
+				</div>
+		</div>
+		 <br><br>
+	</section>
+	<div class="div_sect1"></div>-->
+	<div class="line-gold mb-12"></div>	
 	<!-- hero-section"> -->
 	    <!--second section start-->
 	<!--<section class="sec-sect py-5" >
@@ -861,6 +1120,40 @@ border-left: 1px solid #fff;
 			</div>
 		</div>
 	</section>-->
+		<div class="line-gold mb-12"></div>	
+    <!--second section start-->
+	<section class="sec-sect sec-sect2 py-5" >
+		<div class="container ">
+			<div class="row"> 
+				<div class="col-lg-12 col-sm-12 col-md-12">
+					<div class="head-seched">
+					<br><br>
+						<h1 data-aos="fade-up" style='text-align: left; text-transform: uppercase;font-family: "Sofia", sans-serif;font-weight: 500;' data-aos-delay="200">Business Solutions</h1> 
+						<p data-aos="fade-up" data-aos-delay="200">Empowering organizations with intelligent, scalable, and future-ready digital solutions designed to accelerate growth and improve operational efficiency. Our Business Solutions combine advanced technology, data-driven insights, and user-centric design to help businesses innovate, automate, and thrive in a competitive market.</p>
+						<div class="row gy-2 gx-4 mb-4" data-aos="fade-up" data-aos-delay="200" >
+						<div class="col-lg-12">
+							<ul>
+								<li> Modernize your workflows, migrate to cloud platforms, and streamline operations using AI-driven automation and smart tools tailored to your business needs.</li>
+								<li>  Custom enterprise-grade applications designed for performance, security, and scalability—built to simplify complex business processes.</li>
+								<li> Integrate AI models, chatbots, predictive analytics, and intelligent automation systems to reduce manual work, improve accuracy, and enhance decision-making.</li>
+								<li> Implement and customize platforms like Vtiger, Salesforce, Odoo, and custom ERP systems to optimize customer engagement and business operations.</li>
+								<li>Transform raw data into actionable insights with dashboards, reporting tools, and predictive models to support smarter, faster decisions.</li>
+								<li> Deploy secure, scalable cloud environments with continuous monitoring and optimization for maximum performance and reliability.</li>	
+							 
+							</ul>
+							<a href="Business_Solutions.html" class="btn btn-primary btn-primary13 ml-3" data-aos="fade-up" data-aos-delay="150" style="transform: scale(1);">Explore Features Now →</a>  
+						</div>  
+                    </div> 
+					 
+					</div> 
+					 
+				</div> 
+				 <br><br>
+			</div>
+		</div>
+	</section>
+ 
+	  <!--second section ends-->
 	<div class="line-gold mb-12"></div>	
 		    <!--second section start-->
 	<section class="sec-sect sec-sect1 py-5" >
@@ -916,148 +1209,10 @@ border-left: 1px solid #fff;
 		</div>
 		 <br><br>
 	</section>
-	<div class="line-gold mb-12"></div>	
-    <!--second section start-->
-	<section class="sec-sect sec-sect2 py-5" >
-		<div class="container ">
-			<div class="row"> 
-				<div class="col-lg-12 col-sm-12 col-md-12">
-					<div class="head-seched">
-					<br><br>
-						<h1 data-aos="fade-up" style='text-align: left; text-transform: uppercase;font-family: "Sofia", sans-serif;font-weight: 500;' data-aos-delay="200">Business Solutions</h1> 
-						<p data-aos="fade-up" data-aos-delay="200">Empowering organizations with intelligent, scalable, and future-ready digital solutions designed to accelerate growth and improve operational efficiency. Our Business Solutions combine advanced technology, data-driven insights, and user-centric design to help businesses innovate, automate, and thrive in a competitive market.</p>
-						<div class="row gy-2 gx-4 mb-4" data-aos="fade-up" data-aos-delay="200" >
-						<div class="col-lg-12">
-							<ul>
-								<li> Modernize your workflows, migrate to cloud platforms, and streamline operations using AI-driven automation and smart tools tailored to your business needs.</li>
-								<li>  Custom enterprise-grade applications designed for performance, security, and scalability—built to simplify complex business processes.</li>
-								<li> Integrate AI models, chatbots, predictive analytics, and intelligent automation systems to reduce manual work, improve accuracy, and enhance decision-making.</li>
-								<li> Implement and customize platforms like Vtiger, Salesforce, Odoo, and custom ERP systems to optimize customer engagement and business operations.</li>
-								<li>Transform raw data into actionable insights with dashboards, reporting tools, and predictive models to support smarter, faster decisions.</li>
-								<li> Deploy secure, scalable cloud environments with continuous monitoring and optimization for maximum performance and reliability.</li>	
-							 
-							</ul>
-							<a href="Business_Solutions.html" class="btn btn-primary btn-primary13 ml-3" data-aos="fade-up" data-aos-delay="150" style="transform: scale(1);">Explore Features Now →</a>  
-						</div>  
-                    </div> 
-					 
-					</div> 
-					 
-				</div> 
-				 <br><br>
-			</div>
-		</div>
-	</section>
- 
-	  <!--second section ends-->
-	  <div class="div_sect"></div>
-	   <div class="div_sect"></div>
-	<div class="line-gold mb-12"></div>	
-				<!---six--section-start-->
-	 <div class="div_sect1"></div>
-	<section class="sec-sect sec-sect1 py-5" >
-		<div class="container "> 
 
-				<div class="row">
-					<div class="sect-op">
-					<br><br>
-						  
-					 
-					</div>
-				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
-					<div class="card2 card1122">
-					  <div class="card-body">
-					  <div class="feature-icon"><img src="images/tray.png" style="width:50px;"></div>
-						<h5 class="card-title2" data-aos-once="fade-up" data-aos-delay="210">Who We Serve</h5>
-						 <ul data-aos-once="fade-up" data-aos-delay="210">
-							<li>Students, employees and organisations</li>
-							<li>Schools and higher educational Institutions</li>
-							<li>SMEs & Enterprises</li>
-							<li>Governments and public sectors</li> 
-						</ul> 
-						 
-					  </div>
-					</div>
-				  </div>
-				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="150" >
-					<div class="card2 card1122">
-					  <div class="card-body">
-					  <div class="feature-icon"><img src="images/different-routes.png" style="width:50px;"></div>
-						<h5 class="card-title2">  Why We’re Different</h5>
-						<p style="color:#fff;">We don’t sell tools—we deliver outcomes.</p>
-						 <ul data-aos-once="fade-up" data-aos-delay="210">
-							<li>Measurable performance improvement</li>
-							<li>Sector-specific expertise</li>
-							<li>Practical solutions built for real-world constraints</li>
-							<li>Ethics, transparency, and compliance built in</li> 
-						</ul>  
-						 
-					  </div>
-					</div>
-				  </div>
-				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="180" >
-					<div class="card2 card1122">
-					  <div class="card-body">
-					  <div class="feature-icon"><img src="images/comet.png" style="width:50px;"></div>
-						<h5 class="card-title2"> Our Impact</h5> 
-						<ul data-aos-once="fade-up" data-aos-delay="210">
-							<li>Future-ready students and work force</li>
-							<li>AI-enabled institutions</li>
-							<li>More efficient businesses</li>
-							<li>Smarter public services</li> 
-						</ul>
-					 
-					  </div>
-					</div>
-				  </div>
-				    
-				</div>
-		</div>
-		 <br><br>
-	</section>
-	<div class="div_sect1"></div>
-	<div class="line-gold mb-12"></div>	
-	<!--third-section-start-->
- 
-	 <section class="about-sect py-5">
-		<div class="container">
-			<div class="row"> 
-				<div class="container-fluid overflow-hidden py-5"  >
-					<div class="container py-5">
-						<div class="row g-5">
-							<div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
-								<div class="RotateMoveLeft skill_development1"  data-aos="fade-right" data-aos-delay="250">
-									 <h3>What We Do</h3>
-									 <p>AI That Works. Skills That Last. Impact That Matters. We are a leading AI education and business solutions company. We help businesses, governments, and learners harness intelligent systems, develop future-ready skills, and turn AI potential into measurable, real-world results.</p>
-								</div>
-							</div>
-							<div class="col-lg-3 skill_development3" >
-								 <h3>AI Solutions & Automation</h3>
-									 <ul>
-										<li>AI readiness assessments and strategy</li>
-										<li>Intelligent automation for SMEs</li>
-										<li>Custom AI solutions for enterprises and public sector</li>
-										<li>Trusted AI solutions for government</li> 
-									 </ul>
-							</div>
-							<div class="col-lg-3 skill_development" >
-								 <h3>AI Education & Skill Development</h3>
-									<ul>
-										<li>K–12 AI literacy and teacher training</li>
-										<li>Industry-aligned, domain-specific AI courses and certifications</li>
-										<li>AI curriculum design and faculty enablement for higher education</li>
-										<li>Hands-on labs, real-world projects, and assessments</li> 
-									 </ul>  
-							</div>
-						</div>
-					</div>
-				</div>
-        
-			</div>
-		</div>
-	</section> 
-	<!--third-section-end-->
- <div class="div_sect"></div>
+	  <div class="div_sect"></div>
+	
+	
 		<!---fifth--section-start-->
 	 <div class="line-gold mb-12"></div>	
 	<section class="fifth-section py-5">
@@ -1235,7 +1390,7 @@ border-left: 1px solid #fff;
 						<h3 style='text-align: left; text-transform:uppercase;font-family: "Sofia", sans-serif;font-weight: 500;font-size:2.42rem !important;' data-aos="fade-up" data-aos-delay="210" Style="margin:0px;"  >Our services</h3> 
 					 
 					</div>
-				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
+				  <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up" data-aos-delay="100" >
 					<div class="card2 card1122">
 					  <div class="card-body">
 					  <div class="feature-icon"><img src="images/education_1.png" style="width:50px;"></div>
@@ -1250,7 +1405,7 @@ border-left: 1px solid #fff;
 					  </div>
 					</div>
 				  </div>
-				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="150" >
+				  <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up" data-aos-delay="150" >
 					<div class="card2 card1122">
 					  <div class="card-body">
 					  <div class="feature-icon"><img src="images/education.png" style="width:50px;"></div>
@@ -1266,7 +1421,7 @@ border-left: 1px solid #fff;
 					  </div>
 					</div>
 				  </div>
-				  <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up" data-aos-delay="180" >
+				  <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up" data-aos-delay="180" >
 					<div class="card2 card1122">
 					  <div class="card-body">
 					  <div class="feature-icon"><img src="images/price.png" style="width:50px;"></div>
@@ -1280,7 +1435,7 @@ border-left: 1px solid #fff;
 					  </div>
 					</div>
 				  </div>
-				   <div class="col-sm-12 col-lg-4 col-md-12"  data-aos="fade-up"   >
+				   <div class="col-sm-12 col-lg-3 col-md-12"  data-aos="fade-up"   >
 					<div class="card2 card1122">
 					  <div class="card-body">
 					  <div class="feature-icon"><img src="images/public-relations.png" style="width:50px;"></div>
@@ -1299,7 +1454,7 @@ border-left: 1px solid #fff;
 		 <br><br>
 	</section>
 	<div class="div_sect"></div>
-	<!-- fifth  Start 
+	<!-- fifth  Start -->
  
  
 <!-- Footer Start -->	
