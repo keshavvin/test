@@ -282,6 +282,8 @@ font-size: 6rem;
     background-clip: text;
 	color: #02c0f0;
 }
+ 
+ 
 .hero-section{
  //padding: 5rem 0;
   background: linear-gradient(135deg, #0a0a0a 0%, #0a0a0a 100%);
@@ -1076,7 +1078,7 @@ max-width: 100%;
   margin-bottom: 0px !important;
 }
 .banner.hero-section h3{
-	font-size: 41px !important;
+	font-size: 6rem !important;
 }
 .secon-section.What_we_do img{
 	padding-top: 40px;
