@@ -193,11 +193,11 @@ header .navbar-sec ul.menuList li a {
   background: #0a0a0a;
   color: white; 
   overflow: hidden;
-  padding: 18px 0px;
+  padding: 10px 0px;
 }
 .header img{
 	width:auto;
-	max-width:230px;
+	max-width:150px !important;
 	 
 }
 .footer{
