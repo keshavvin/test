@@ -1,0 +1,28 @@
+<ul id="menu">
+  <li class="item">Home</li>
+  <li class="item">About</li>
+  <li class="item">Services</li>
+  <li class="item2">Contact</li>
+</ul>
+<style>
+.active {
+  color: white;
+  background: #007bff;
+}
+
+</style>
+<script>
+const items = document.querySelectorAll('#menu .item2');
+
+items.forEach(item2 => {
+  item2.addEventListener('click', () => {
+    // remove active from all
+    items.forEach(i => i.classList.remove('active'));
+
+    // add active to clicked item
+    item2.classList.add('active');
+  });
+});
+
+</script>
+

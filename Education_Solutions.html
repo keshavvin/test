@@ -72,13 +72,13 @@ $(document).ready(function(){
   font-size: 25px;
   font-size: 2.32rem !important;
   color: #02c0f0 !important;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .products h3{
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .What_we_do h3 {
- text-transform: uppercase;
+ text-transform: capitalize;
 }
  svg{
   width:700px;
@@ -270,6 +270,227 @@ $(document).ready(function(){
         padding-top: 0;
     }
 }
+.footer {
+    background: #020205;
+    color: white;
+    padding: 3rem 0 1.5rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(0, 255, 255, 0.2);
+    box-shadow: 0 -5px 30px rgba(0, 255, 255, 0.05);
+}
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+}
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.footer-logo-image {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+}
+.footer-description {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+.social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+.footer-contact li svg {
+    width: 25px;
+    max-width: 100%;
+    height: auto;
+    /* margin: 0 auto; */
+    display: block;
+}
+.footer-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #00ffff;
+}
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+.footer-contact {
+list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+ 
+.footer-contact li {
+display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+.footer-contact a:hover {
+    color: white;
+}
+ul>li>a { 
+    color: #f1f1f1; 
+}
+
+.page-hero {
+    background: linear-gradient(135deg, #000, #050510 25%, #0a0a1a 50%, #050510 75%, #000); 
+    border-bottom: 1px solid #00d4ff33; 
+    padding: 8rem 1.5rem 4rem;
+    text-align: center;
+}
+.heading-cyan {
+    color: #00d4ff !important;
+	text-transform: capitalize;
+}
+.heading-hero {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 1.2;
+}
+.heading-1, .heading-hero {
+    color: #fff; 
+    margin: 0 0 1rem;
+}
+.hero-subtitle {
+    color: #e2e8f0; 
+    font-size:  1.011rem !important;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+.page-hero {
+    background: linear-gradient(327deg, #000, #050510 25%, #0a0a1a 50%, #050510 75%, #000);
+    /* border-bottom: 1px solid #00d4ff33; */
+    padding: 8rem 1.5rem 4rem;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(images/about_ban.jpg);
+    text-align: center;
+	background-color: #000000b2;
+    background-blend-mode: overlay;
+}
+.section {
+    padding: 4rem 0;
+    background: #050508;
+}
+.heading-1.heading-cyan {
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 500;
+    letter-spacing: -.01em;
+    line-height: 1.3;
+    color: #00d4ff !important;
+    margin: 0 0 1rem;
+}
+.body-large {
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.6;
+    font-weight: 400;
+    color: var(--text-primary);
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+}
+
+ 
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 0.9375rem;
+    min-height: 3rem;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #00ffff 0%, #a855f7 50%, #00ffff 100%);
+    color: #000000;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-family: 'SF Mono', monospace;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    min-height: 2.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    line-height: 1.2;
+    box-shadow: var(--glow-multi);
+    position: relative;
+    overflow: hidden;
+}
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%; 
+    transition: left 0.5s;
+	background: linear-gradient(135deg, #00ffff 0%, #a855f7 50%, #00ffff 100%);	
+}
+.body-large {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: #fff;
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+}
  </style>
   </head>
   <body>
@@ -338,7 +559,17 @@ $(document).ready(function(){
   <!--header -end-->
  
  <!--hero section Start-->
- <section class="banner hero-section">
+  <section class="page-hero banner "> 
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-sm-12 col-md-12">
+			 <h1 class="heading-hero heading-cyan">AI Education Solutions</h1>
+			 <p class="hero-subtitle">Empowering the next generation with AI literacy, from K-12 to higher education and professional development.</p>
+			</div>
+		</div> 
+	</div>
+ </section>
+ <!--<section class="banner hero-section">
     <div class="container">
       <div class="row align-items-center">
           <div class="col-md-5 col-lg-5 order-md-2" data-aos="zoom-in-up" data-aos-delay="300">
@@ -356,7 +587,7 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
-</section>
+</section>-->
 <div class="div_sect"></div>
 	<!-- hero-section"> -->
   <div class="line-gold mb-12"></div>	
@@ -550,110 +781,121 @@ $(document).ready(function(){
   <div class="div_sect"> </div>
   <div class="div_sect"></div>
 <!-- Footer Start -->	
-<div class="div_sect "> </div>
-<div class="line-gold mb-12"></div>	
-<footer class="fotter-section">
-	<div class="container">
-		<div class="row">
-			 
-				<div class="col-lg-3 col-sm-12 col-md-12">
-				<div class="footer_one_col">
-				<div class="logo-part">
-					  <img src="images/logo.png" class="logo-footer" >
-					 
-					 <br> <br>
-                  <p>From enterprises to government departments, we deliver content automation systems that ensure accuracy, efficiency, and consistency at scale.</p>
-				  
-		     </div>			   
-				 
-			</div>
-				</div>
-				<div class="col-lg-3 col-sm-12 col-md-12"> 
-					<div class="footer_two_col">
-						<div class="footer_three_col">
-						 <h6> Short links</h6> 
-							<p><a href="index.html">Home</a></p>
-							<p><a href="about.html">About</a></p> 
-							<p><a href="#">Team</a></p> 
-						</div>  
-					</div>  
-				</div> 
-					<div class="col-lg-3 col-sm-12 col-md-12"> 
-						<div class="footer_two_col">
-							<div class="footer_three_col">
-							 <h6> Help links</h6>  
-								<p><a href="privacy_policy.html">Privacy Policy</a></p>  
-								<p><a href="contact_us.html">Contact</a></p> 
-							</div>  
-						</div>  
-					</div> 
-				<div class="col-lg-3 col-sm-12 col-md-12">
-					  <div class="footer_four_col">
-						   <h6> PGS AI</h6> 
-						   <p> </p> 
-						   <p><i class="fa-regular fa-envelope"></i>  <a href="mailto:info@mypgsAI.com" style="color:#fff; text-decoration:none;"> info@mypgsAI.com</a></p>
-						   <p><i class="fa-solid fa-phone"></i>  <a href="tel:+91 92490 92795" style="color:#fff; text-decoration:none;"> +91 92490 92795</a></p>
-						   <div class="icons">
-				  <a href="https://www.facebook.com/MyPGSAI" style="color:#fff; padding: 4px;"><i class="fa-brands fa-facebook-f"></i></a><a href="https://www.instagram.com/pgs.AI/" style="color:#fff; padding: 4px;"><i class="fa-brands fa-instagram"></i></a><a href="https://www.youtube.com/@pgsAI" style="color:#fff; padding: 4px;"><i class="fa-brands fa-youtube"></i></a>
-               </div>
-						</div>   
-				</div> 					
-				</div> 
-				<br><br>
-				<div class="row">
-				<div class="col-lg-12 col-sm-12 col-md-12">
-					<div class="part-cnter" style="text-align:center;"> 
-                  <p>© 2025 | All rights reserved | PGS AI</p>
-               </div>
-					</div>			   
-				</div>
-			</div>
+
+<section class="section">
+	<div class="container text-center">
+		<div class="row"> 
+		<div class="ccol-lg-12 col-sm-12 col-md-12">
+			<h2 class="heading-1 heading-cyan">Ready to Work Together?</h2>
+			<p class="body-large">Let's explore how PGS Super AI can help you achieve your goals.</p>
+			<a href="contact_us" data-discover="true">
+			<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 btn-primary btn-large">Get in Touch</button>
+			</a>
+		</div>
+		</div> 
+	</div>
+</section>
+ <footer class="footer">
+ 
+	 <div class="container">
+	 
+	 <div class="footer-content">
+	 
+		 <div class="footer-section">
 		 
-</footer> 
+			 <img alt="PGS Super AI" class="footer-logo-image" src="./images/logo.png">
+				<p class="footer-description">Leading AI education and business solutions company delivering intelligent, scalable, and secure AI systems.</p>
+			<div class="social-links">
+				<a href="#" class="social-link" aria-label="LinkedIn">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+				</a>
+				<a href="#" class="social-link" aria-label="Twitter">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter" aria-hidden="true"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+				</a>
+				<a href="#" class="social-link" aria-label="Facebook">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+				</a>
+				<a href="#" class="social-link" aria-label="Instagram">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+				</a>
+		 </div>
+		</div>
+		 <div class="footer-section">
+			 <h4 class="footer-title">Solutions</h4>
+			 <ul class="footer-links">
+			 <li>
+			 <a href="/education" data-discover="true">AI Education</a>
+			 </li>
+			 <li>
+			 <a href="/business" data-discover="true">Business Automation</a></li><li><a href="/business#government" data-discover="true">Government Solutions</a>
+			 </li>
+			 <li>
+			 <a href="/business#enterprise" data-discover="true">Enterprise Solutions</a>
+			 </li>
+			 </ul>
+		 </div>
+		 <div class="footer-section">
+			 <h4 class="footer-title">Company</h4>
+			 <ul class="footer-links">
+				 <li>
+					<a href="/about" data-discover="true">About Us</a>
+				 </li>
+				 <li>
+					<a href="/partners" data-discover="true">Partners</a>
+				 </li>
+				 <li>
+					<a href="/contact" data-discover="true">Contact</a>
+				 </li>
+				 <li>
+					<a href="#">Privacy Policy</a>
+				 </li>
+			 </ul>
+		 </div>
+	 <div class="footer-section">
+		 <h4 class="footer-title">Get in Touch</h4>
+			 <ul class="footer-contact">
+				 <li>
+				 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect></svg><a href="mailto:info@pgssuperai.com">info@pgssuperai.com</a>
+				 </li>
+				 <li>
+				 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+				 <a href="tel:+1 (555) 123-4567">+1 (555) 123-4567</a>
+				 </li>
+				 <li>
+				 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
+				 <span>123 Innovation Drive, Tech City, TC 12345</span>
+				 </li>
+			 </ul>
+		</div>
+	 </div>
+		<div class="footer-bottom"><p>© 2026 PGS Super AI. All rights reserved.</p>
+	 </div>
+	 </div>
+ </footer>
     <!-- Back to Top -->
     <a href="#" onclick="topFunction()" id="myBtn" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     <!-- Optional JavaScript -->
-	 <script> 
- 
-			var owl = $('.owl-carousel');
-			owl.owlCarousel({
-				items: 2,
-				loop: true,
-				margin: 10,
-				autoplay: true,
-				autoplayTimeout: 6000,
-				autoplayHoverPause: true,
-				responsive: {
-					0: { items: 1 },
-					576: { items: 1 },
-					992: { items: 2 }
-				}
-			}); 
-			 
-			// Get the button
-				let mybutton = document.getElementById("myBtn");
+<script>  
+// Get the button
+	let mybutton = document.getElementById("myBtn");
 
-				// When the user scrolls down 20px from the top of the document, show the button
-				window.onscroll = function() {scrollFunction()};
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {scrollFunction()};
 
-				function scrollFunction() {
-				  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-					mybutton.style.display = "block";
-				  } else {
-					mybutton.style.display = "none";
-				  }
-				}
+	function scrollFunction() {
+	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		mybutton.style.display = "block";
+	  } else {
+		mybutton.style.display = "none";
+	  }
+	}
 
-				// When the user clicks on the button, scroll to the top of the document
-				function topFunction() {
-				  document.body.scrollTop = 0;
-				  document.documentElement.scrollTop = 0;
-				}
-          </script>
-		  
- 
- 
-  
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+	  document.body.scrollTop = 0;
+	  document.documentElement.scrollTop = 0;
+	}
+</script> 
  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
