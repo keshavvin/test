@@ -200,11 +200,12 @@ header .navbar-sec ul.menuList li a {
 	max-width:150px !important;
 	 
 }
+ 
 .header.sticky-top{
 	background: linear-gradient(145deg, #0f0f19f2, #0a0a14fa);
 }
 .footer{
-	    background: #000;
+	    	background: linear-gradient(145deg, #0f0f19f2, #0a0a14fa);
     color: #fff;
 
 }
