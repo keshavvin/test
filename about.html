@@ -302,6 +302,7 @@ $(document).ready(function(){
     margin-left: auto;
     margin-right: auto;
     max-width: 600px;
+ text-transform: capitalize;
 }
 .heading-hero {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
@@ -3732,6 +3733,7 @@ padding: 0px 0px;
         </div>-->
         <!-- Spinner End -->
         <!-- Spinner End -->
+ 
 <header class="header sticky-top">
 	  <div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light sticky-top">
@@ -3754,48 +3756,86 @@ padding: 0px 0px;
 		  </button>
 
 		  <!-- Menu -->
-		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav ml-auto">
+		  <div class="collapse navbar-collapse navecation" id="navbarNavDropdown">
+		  
+			<ul class="navbar-nav ml-auto" id="navi">
 
-			  <li class="nav-item active">
+			  <li class="nav-item menu ">
 				<a class="nav-link" href="index.html">Home</a>
 			  </li>
 
-			  <li class="nav-item dropdown">
+			  <li class="nav-item dropdown menu">
 				<a class="nav-link page-scroll" href="about.html">About Us</a>
 				 
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Education_Solutions.html">Education Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Business_Solutions.html">Business Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="contact_us.html"> Contact Us</a>
 			  </li>
 
 			</ul>
 		  </div>
 
-		  <!-- Button -->
-			<a href="Get_Started.html" data-discover="true">
+		    <!-- Button -->
+			 
+			<a href="Get_Started.html" data-discover="true" class="hidebtn">
 			 <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 btn-primary">Get Started</button>
 			 </a>
 		  
 		</nav>
 	  </div>
 	</header>
+	<style>
+#navi li {
+  list-style: none;
+  float: left;
+  padding-right: 20px;
+}
+
+#navi li a {
+  text-decoration: none;
+  color: #222; 
+  padding: 4px 8px;
+}
+
+#navi li.active a { 
+    color: #01c7f2 !important;
+    border-bottom: 2px solid #01c7f2;
+}
+
+
+	</style>
+ 
+ 
+<script>
+$(document).ready(function () {
+  var currentPage = window.location.pathname.split("/").pop();
+
+  $('#navi li').removeClass('active');
+
+  $('#navi li a').each(function () {
+    if ($(this).attr('href') === currentPage) {
+      $(this).parent('li').addClass('active');
+    }
+  });
+});
+</script>
+
 
  <section class="page-hero banner"> 
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12">
-			 <h1 class="heading-hero heading-cyan">About PGS Super AI</h1>
-			 <p class="hero-subtitle">We're on a mission to democratize AI through education and empower businesses with intelligent automation.</p>
+			 <h1 class="heading-hero heading-cyan" style="text-transform: uppercase;">About PGS Super AI</h1>
+			 <p class="hero-subtitle" style="text-transform: uppercase;">We're on a mission to democratize AI through education and empower businesses with intelligent automation.</p>
 			</div>
 		</div> 
 	</div>

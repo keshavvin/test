@@ -288,7 +288,7 @@ $(document).ready(function(){
     background-blend-mode: overlay;
 }
 .heading-cyan {
-    color: #00d4ff !important;
+    color: #00d4ff !important; 
 }
 .heading-1, .heading-hero {
 text-transform: capitalize;
@@ -3707,7 +3707,7 @@ border: 1px solid #00ffff26 !important;
 
 /* Heading with Cyan Underline */
 .heading-cyan {
-  color: #00d4ff !important;
+  color: #00d4ff !important; 
 }
 
 .heading-cyan.gradient {
@@ -3768,48 +3768,85 @@ padding: 0px 0px;
 		  </button>
 
 		  <!-- Menu -->
-		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav ml-auto">
+		  <div class="collapse navbar-collapse navecation" id="navbarNavDropdown">
+		  
+			<ul class="navbar-nav ml-auto" id="navi">
 
-			  <li class="nav-item active">
+			  <li class="nav-item menu ">
 				<a class="nav-link" href="index.html">Home</a>
 			  </li>
 
-			  <li class="nav-item dropdown">
+			  <li class="nav-item dropdown menu">
 				<a class="nav-link page-scroll" href="about.html">About Us</a>
 				 
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Education_Solutions.html">Education Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Business_Solutions.html">Business Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="contact_us.html"> Contact Us</a>
 			  </li>
 
 			</ul>
 		  </div>
 
-		  <!-- Button -->
-			<a href="Get_Started.html" data-discover="true">
+		    <!-- Button -->
+			 
+			<a href="Get_Started.html" data-discover="true" class="hidebtn">
 			 <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 btn-primary">Get Started</button>
 			 </a>
 		  
 		</nav>
 	  </div>
 	</header>
+	<style>
+#navi li {
+  list-style: none;
+  float: left;
+  padding-right: 20px;
+}
+
+#navi li a {
+  text-decoration: none;
+  color: #222; 
+  padding: 4px 8px;
+}
+
+#navi li.active a { 
+    color: #01c7f2 !important;
+    border-bottom: 2px solid #01c7f2;
+}
+
+
+	</style>
+ 
+ 
+<script>
+$(document).ready(function () {
+  var currentPage = window.location.pathname.split("/").pop();
+
+  $('#navi li').removeClass('active');
+
+  $('#navi li a').each(function () {
+    if ($(this).attr('href') === currentPage) {
+      $(this).parent('li').addClass('active');
+    }
+  });
+});
+</script>
 
    <section class="page-hero banner "> 
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12">
-			 <h1 class="heading-hero heading-cyan">Business Automation Solutions</h1>
-			 <p class="hero-subtitle">Intelligent automation that transforms operations, from small businesses to enterprises and government sectors. Our proprietary platforms — NeuraEdge (SLM) and NeuraDesk (DLLM) — enable secure, fast, and accurate AI solutions.</p>
+			 <h1 class="heading-hero heading-cyan" style="text-transform: uppercase;">Business Automation Solutions</h1>
+			 <p class="hero-subtitle" style="text-transform: uppercase;">Intelligent automation that transforms operations, from small businesses to enterprises and government sectors. Our proprietary platforms NeuraEdge (SLM) and NeuraDesk (DLLM) enable secure, fast, and accurate AI solutions.</p>
 			</div>
 		</div> 
 	</div>

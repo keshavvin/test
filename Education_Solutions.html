@@ -38,6 +38,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="mapdata.js"></script>
     <script src="worldmap.js"></script>
+	  <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>PGS-AI</title>
   <script>
 
@@ -3431,7 +3432,28 @@ html {
 svg {
     width: 25px; 
 }
-
+.test{
+display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.img-side img{
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+	border-radius: 20px;
+    border-right: 4px solid #00d4ff;
+}
+.img-side2 img{
+    background-color: #fff;
+    width: 100%;
+    height: auto;
+	border-radius: 20px;
+    border-left: 4px solid #00d4ff;
+}
  </style>
   </head>
   <body>
@@ -3462,27 +3484,28 @@ svg {
 		  </button>
 
 		  <!-- Menu -->
-		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav ml-auto">
+		  <div class="collapse navbar-collapse navecation" id="navbarNavDropdown">
+		  
+			<ul class="navbar-nav ml-auto" id="navi">
 
-			  <li class="nav-item active">
+			  <li class="nav-item menu ">
 				<a class="nav-link" href="index.html">Home</a>
 			  </li>
 
-			  <li class="nav-item dropdown">
+			  <li class="nav-item dropdown menu">
 				<a class="nav-link page-scroll" href="about.html">About Us</a>
 				 
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Education_Solutions.html">Education Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Business_Solutions.html">Business Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="contact_us.html"> Contact Us</a>
 			  </li>
 
@@ -3498,17 +3521,59 @@ svg {
 		</nav>
 	  </div>
 	</header>
+	<style>
+#navi li {
+  list-style: none;
+  float: left;
+  padding-right: 20px;
+}
 
+#navi li a {
+  text-decoration: none;
+  color: #222; 
+  padding: 4px 8px;
+}
+
+#navi li.active a { 
+    color: #01c7f2 !important;
+    border-bottom: 2px solid #01c7f2;
+}
+.img-side{
+	    position: relative;
+    top: 60px;
+}
+.img-side2{
+    position: relative;
+    top: 60px;
+}
+
+	</style>
+ 
+ 
+<script>
+$(document).ready(function () {
+  var currentPage = window.location.pathname.split("/").pop();
+
+  $('#navi li').removeClass('active');
+
+  $('#navi li a').each(function () {
+    if ($(this).attr('href') === currentPage) {
+      $(this).parent('li').addClass('active');
+    }
+  });
+});
+</script>
+ 
  
   <!--header -end-->
  
  <!--hero section Start-->
-  <section class="page-hero banner"> 
+  <section class="page-hero banner "> 
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12">
-			 <h1 class="heading-hero heading-cyan">AI Education Solutions</h1>
-			 <p class="hero-subtitle">Empowering the next generation with AI literacy, from K-12 to higher education and professional development.</p>
+			 <h1 class="heading-hero heading-cyan animate__animated animate__fadeInDown" style="text-transform: uppercase;">AI Education Solutions</h1>
+			 <p class="hero-subtitle animate__animated animate__fadeInDown" style="text-transform: uppercase;">Empowering the next generation with AI literacy, from K-12 to higher education and professional development.</p> 
 			</div>
 		</div> 
 	</div>
@@ -3518,27 +3583,27 @@ svg {
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12">
 			<div class="stat-cards">
-				 <h2 class="Educ_heading">Why AI Education Matters</h2>
-				<p class="Educ_heading_p">AI is transforming every industry. Students who understand AI today will lead tomorrow. Schools that embrace AI education now will prepare their students for a future where AI literacy is as fundamental as reading and writing.</p>
+				 <h2 class="Educ_heading animate__animated animate__fadeInDown">Why AI Education Matters</h2>
+				<p class="Educ_heading_p animate__animated ">AI is transforming every industry. Students who understand AI today will lead tomorrow. Schools that embrace AI education now will prepare their students for a future where AI literacy is as fundamental as reading and writing.</p>
 			</div>
 			
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-lg-4 col-sm-12 col-md-12">
-			<div class="stat-card">
+			<div class="stat-card animate__animated animate__fadeInUp">
 			 <h2 class="heading-hero heading-cyan stat-number">85%</h2>
 			 <p class="hero-subtitle">of jobs in 2030 will require AI skills</p>
 			</div>
 			</div>
 			<div class="col-lg-4 col-sm-12 col-md-12">
-			<div class="stat-card">
+				<div class="stat-card animate__animated animate__fadeInUp">
 			 <h2 class="heading-hero heading-cyan stat-number">K-12</h2>
 			 <p class="hero-subtitle">AI literacy should start early</p>
 			</div>
 			</div>
 			<div class="col-lg-4 col-sm-12 col-md-12">
-			<div class="stat-card">
+				<div class="stat-card animate__animated animate__fadeInUp">
 			 <h2 class="heading-hero heading-cyan stat-number">100+</h2>
 			 <p class="hero-subtitle">Schools empowered</p>
 			</div>
@@ -3550,7 +3615,7 @@ svg {
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12">
-				<div class="card-sectio heading">
+				<div class="card-sectio heading animate__animated animate__fadeInUp">
 					<h2 class="heading-1 heading-cyan text-center">Our Learning Products</h2>
 				</div>
 			</div>
@@ -3558,7 +3623,7 @@ svg {
 		<div class="programs-grid" >
 		<div class="row"> 
 			<div class="col-lg-3 col-sm-12 col-md-12">
-				<div class="rounded-xl border bg-card text-card-foreground shadow program-card" >
+				<div class="rounded-xl border bg-card text-card-foreground shadow program-card animate__animated animate__fadeInUp" >
 				 <div class="program-header" >
 					<span class="program-badge"  >K-12</span>
 					<h3 class="heading-3" >K-12 AI Programs</h3>
@@ -3573,7 +3638,7 @@ svg {
 				 </div>
 			</div>
 			<div class="col-lg-3 col-sm-12 col-md-12">
-				  <div class="rounded-xl border bg-card text-card-foreground shadow program-card" >
+				  <div class="rounded-xl border bg-card text-card-foreground shadow program-card animate__animated animate__fadeInUp" >
 					 <div class="program-header" >
 						 <span class="program-badge" >Higher Ed</span>
 						 <h3 class="heading-3" >Higher Education Programs</h3>
@@ -3589,7 +3654,7 @@ svg {
 			</div>
 			<div class="col-lg-3 col-sm-12 col-md-12">
 				
-				 <div class="rounded-xl border bg-card text-card-foreground shadow program-card">
+				 <div class="rounded-xl border bg-card text-card-foreground shadow program-card animate__animated animate__fadeInUp">
 					<div class="program-header">
 					<span class="program-badge">Professional</span>
 					<h3 class="heading-3">AI Teacher Training</h3>
@@ -3605,7 +3670,7 @@ svg {
 				 </div>
 			</div>
 			<div class="col-lg-3 col-sm-12 col-md-12">
-				 <div class="rounded-xl border bg-card text-card-foreground shadow program-card" >
+				 <div class="rounded-xl border bg-card text-card-foreground shadow program-card animate__animated animate__fadeInUp" >
 					 <div class="program-header" >
 						<span class="program-badge" >Lab</span>
 						<h3 class="heading-3" >AI Lab</h3>
@@ -3632,15 +3697,30 @@ svg {
 				</div>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="col-lg-6 col-sm-12 col-md-12">
+				  
+				  
+			</div>
+			<div class="col-lg-6 col-sm-12 col-md-12">
+				  
+				  
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-lg-12 col-sm-12 col-md-12">
-				<div class="k12-partner-section" >
+				<div class="k12-partner-section  animate__animated animate__fadeInUp" >
 					<p class="partner-tagline" >
 					<span class="brand-name" >PGS Super AI</span> — A Trusted School Partner in 21st-Century AI Education</p>
-				<div class="what-we-offer-box" >
+					<div class="row">
+					<div class="what-we-offer-box" >
 					<h3 class="heading-2" >What We Offer</h3>
 					<p class="offer-description" >Inspiring young innovators from grade 1 to 12 with comprehensive AI education.</p>
 					<p class="offer-description">A complete, plug-and-play K-12 curriculum aligned AI education solution designed for schools.</p>
+					<div class="test">
+					<div class="col-lg-6 col-sm-12 col-md-12">
+				
 					<ul class="offer-features-list">
 						<li>AI Literacy education (grades 1–12)</li>
 						<li>Plug-and-play curriculum and teacher training</li>
@@ -3652,8 +3732,26 @@ svg {
 						<li>Dedicated school onboarding and on going support</li>
 					</ul>
 				</div>
+				<div class="col-lg-6 col-sm-12 col-md-12">
+				
+				<div class="img-side">
+					<img src="./images/What_We_Offer.png">
 				</div>
-				  <div class="combined-schools-card">
+				</div>
+				</div>
+				</div>
+				</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="row">
+		<div class="test">
+					  <div class="combined-schools-card  animate__animated animate__fadeInUp">
+						<div class="col-lg-12 col-sm-12 col-md-12"> 
+						</div>
+					
 					  <div class="schools-section">
 						<h3 class="heading-3 heading-cyan">Why Schools Must Act Now</h3>
 						<p class="body-medium">The AI revolution is here. Governments are integrating AI into school education, parents are demanding future-ready skills. Schools that integrate AI literacy today will give their students an unparalleled advantage in college admissions, careers, and life.</p>
@@ -3662,7 +3760,16 @@ svg {
 							<p class="cta-delay">"Schools that delay fall <span class="highlight-text">Behind</span>"</p>
 						  </div>
 					  </div>
-					  <div class="schools-section">
+					  <div class="test">
+					  <div class="col-lg-6 col-sm-12 col-md-12"> 
+						<div class="img-side2">
+							<img src="./images/Why_Schools_Must_Ac_Now.jpg">
+						</div>
+					</div>
+					<div class="col-lg-6 col-sm-12 col-md-12">
+				
+					
+					  <div class="schools-section animate__animated animate__fadeInUp">
 							<h3 class="heading-3 heading-cyan">How It Benefits Schools</h3>
 							<p class="body-medium benefits-intro">Schools that adopt AI literacy:</p>
 						  <ul class="benefits-list-detailed">
@@ -3677,16 +3784,14 @@ svg {
 						  </div>
 					  </div>
 				  </div>
-				  <div class="detail-grid">
-				    <div class="detail-card">
-						<h3 class="heading-3 heading-cyan">PGS Super AI Textbooks</h3>
-						<p class="body-medium">Comprehensive, age-appropriate AI textbooks for grades 1-12, designed to make complex concepts accessible and engaging for young learners.</p>
-					</div>
-					<div class="detail-card">
-						<h3 class="heading-3 heading-cyan">AI Lab</h3>
-						<p class="body-medium">We design and integrate advanced AI labs facilities for schools and colleges, delivering next-generation robotics and artificial intelligence experiences. Students gain hands-on exposure to computer vision, edge AI, and real-world problem-solving applications.</p>
-					</div>
+					
 				</div>
+				</div>
+				</div>
+			 
+				 
+				 
+				
 			</div>
 		</div>
 		 
@@ -3696,7 +3801,7 @@ svg {
   <div class="container">
    <div class="row">
      <div class="col-lg-12 col-sm-12 col-md-12">
-     <div class="higher-ed-card">
+     <div class="higher-ed-card animate__animated animate__fadeInUp">
 		<h2 class="heading-1 heading-cyan text-center">Higher Education AI Skills Development</h2>
 		 <p class="body-medium text-center heading-cyan" style="margin-top: 0.5rem; margin-bottom: 1.5rem; font-weight: bold;">Designed for undergraduates, postgraduates and working professionals</p>
 		 <p class="body-large text-center">Domain-specific AI programs that bridge the gap between academia and industry.</p>
@@ -3743,7 +3848,7 @@ svg {
 	  </div>
 	  </div>
 	  </section>
-<section class="section section-alt six">
+<section class="section section-alt six animate__animated animate__fadeInUp">
 
 	<div class="container">
 		<h2 class="heading-1 heading-cyan">Success Stories</h2>
@@ -3774,7 +3879,7 @@ svg {
 	</div>
 </section>
  	
-<section class="cta-section">
+<section class="cta-section animate__animated animate__fadeInUp">
 	<div class="container">
 		<div class="row"> 
 		<div class="col-lg-12 col-sm-12 col-md-12">

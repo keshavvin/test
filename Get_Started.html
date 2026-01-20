@@ -280,6 +280,7 @@ $(document).ready(function(){
 }
 .heading-cyan {
     color: #00d4ff !important;
+	
 }
 .heading-1, .heading-hero {
     color: #fff; 
@@ -3713,6 +3714,7 @@ padding: 0px 0px;
             <div class="spinner-grow text-primary" role="status"></div>
         </div>-->
         <!-- Spinner End -->
+ 
 <header class="header sticky-top">
 	  <div class="container">
 		<nav class="navbar navbar-expand-lg navbar-light sticky-top">
@@ -3735,41 +3737,79 @@ padding: 0px 0px;
 		  </button>
 
 		  <!-- Menu -->
-		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav ml-auto">
+		  <div class="collapse navbar-collapse navecation" id="navbarNavDropdown">
+		  
+			<ul class="navbar-nav ml-auto" id="navi">
 
-			  <li class="nav-item active">
+			  <li class="nav-item menu ">
 				<a class="nav-link" href="index.html">Home</a>
 			  </li>
 
-			  <li class="nav-item dropdown">
+			  <li class="nav-item dropdown menu">
 				<a class="nav-link page-scroll" href="about.html">About Us</a>
 				 
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Education_Solutions.html">Education Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="Business_Solutions.html">Business Solutions</a>
 			  </li>
 
-			  <li class="nav-item">
+			  <li class="nav-item menu">
 				<a class="nav-link page-scroll" href="contact_us.html"> Contact Us</a>
 			  </li>
 
 			</ul>
 		  </div>
 
-		  <!-- Button -->
-			<a href="Get_Started.html" data-discover="true">
+		    <!-- Button -->
+			 
+			<a href="Get_Started.html" data-discover="true" class="hidebtn">
 			 <button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2 btn-primary">Get Started</button>
 			 </a>
 		  
 		</nav>
 	  </div>
 	</header>
+	<style>
+#nav-item li {
+  list-style: none;
+  float: left;
+  padding-right: 20px;
+}
+
+#nav-item li a {
+  text-decoration: none;
+  color: #222;
+  background-color: #ccc;
+  padding: 4px 8px;
+}
+
+#nav-item li a.active {
+  background-color: #d90000;
+  color: #fff;
+}
+
+
+	</style>
+	<script>
+ 
+$(document).ready(function () {
+  var currentPage = window.location.pathname.split("/").pop();
+
+  $('#nav-item li').removeClass('active');
+
+  $('#nav-item li a').each(function () {
+    if ($(this).attr('href') === currentPage) {
+      $(this).parent().addClass('active');
+    }
+  });
+});
+</script>	 
+
 
  
   <!--header -end-->
@@ -3777,8 +3817,8 @@ padding: 0px 0px;
 	 <div class="container">
 	 <div class="row">
 		<div class="col-lg-12 col-sm-12 col-md-12">
-			<h1 class="heading-hero heading-cyan">Get in Touch</h1>
-			<p class="hero-subtitle">Ready to transform with AI? Let's discuss how we can help you achieve your goals.</p>
+			<h1 class="heading-hero heading-cyan" style="text-transform: uppercase;">Get in Touch</h1>
+			<p class="hero-subtitle" style="text-transform: uppercase;">Ready to transform with AI? Let's discuss how we can help you achieve your goals.</p>
 		</div>
 	 </div> 
 	 </div>
