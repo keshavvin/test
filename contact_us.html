@@ -3817,8 +3817,38 @@ padding: 0px 0px;
     color: #01c7f2 !important;
     border-bottom: 2px solid #01c7f2;
 }
-
-
+.accordion-item{
+	background: rgba(26, 31, 46, 0.9);
+    /* padding: 2rem; */
+    /* border-radius: 0.75rem; */
+    /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); */
+    /* border: 1px solid rgba(0, 212, 255, 0.2); */
+    /* transition: all 0.3s ease;
+}
+.accordion-button.collapsed{
+    color: #00d4ff !important;
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    /* line-height: 1.4; */
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+    background: rgba(26, 31, 46, 0.9);
+    /* padding: 2rem; */
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    transition: all 0.3s ease;
+}
+.accordion-button{
+	    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    line-height: 0;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0px 0 0rem 0;
+    color: #00d4ff !important;
+    background-color: #171c29 !important;
+	border-radius:20px;
+}
 	</style>
  
  
@@ -3876,10 +3906,11 @@ $(document).ready(function () {
 						 <div class="form-group">
 							 <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="interest">I'm Interested In *</label>
 							 <select id="interest" name="interest" class="select-input" required="">
-							 <option value="education">AI Education Solutions</option>
-							 <option value="business">Business Automation</option>
-							 <option value="government">Government Solutions</option>
-							 <option value="partnership">Partnership Opportunities</option>
+							 <option value="K-12 AI Education">K-12 AI Education</option>
+							 <option value="Business Automation">Business Automation</option>
+							 <option value="AI powering Operation for Schools/Colleges">AI powering Operation for Schools/Colleges</option>
+							 <option value="Government Solution">Government Solution</option>
+							 <option value="Partnership Opportunities">Partnership Opportunities</option>
 							 <option value="other">Other</option>
 							 </select>
 						 </div>
@@ -3910,19 +3941,19 @@ $(document).ready(function () {
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
 									 <div>
 										<p class="detail-label">Phone</p>
-										<a href="tel:+1 (555) 123-4567" class="detail-value">+1 (555) 123-4567</a>
+										<a href="tel:7291000005" class="detail-value">+91-7291000005</a>
 									 </div>
 								 </div>
 								 <div class="contact-detail">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
 									 <div>
 										<p class="detail-label">Address</p>
-										<p class="detail-value">123 Innovation Drive, Tech City, TC 12345</p>
+										<p class="detail-value">England, UK</p>
 									 </div>
 								 </div>
 							 </div>
 						 </div>
-						 <div class="rounded-xl border bg-card text-card-foreground shadow business-hours-card animate__animated animate__fadeInUp animate__delay-17s">
+						<!-- <div class="rounded-xl border bg-card text-card-foreground shadow business-hours-card animate__animated animate__fadeInUp animate__delay-17s">
 							<h3 class="heading-3">Business Hours</h3>
 							 <div class="hours-list">
 								 <div class="hours-item">
@@ -3938,7 +3969,7 @@ $(document).ready(function () {
 									<span>Closed</span>
 								 </div>
 							 </div>
-						 </div>
+						 </div>-->
 					 </div>
 				</div>
 			</div> 
@@ -3963,6 +3994,59 @@ $(document).ready(function () {
 						 <p class="body-medium">Interested in joining our partner network? We'd love to explore how we can work together to serve more clients.</p>
 					 </div>
 				</div>
+				
+			</div>
+		</div> 
+	 </div>
+ </section>
+  <section class="section section-alt">
+	 <div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-sm-12 col-md-12">
+			<h2></h2>
+			<h2 class="heading-1 text-center heading-cyan">FAQ</h2><br>
+				<div class="info-boxes animate__animated animate__fadeInUp animate__delay-17s">
+					
+					 <div class="accordion" id="accordionExample">
+					  <div class="accordion-item">
+						<h2 class="accordion-header" id="headingOne">
+						  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							What is AI in education?
+						  </button>
+						</h2>
+						<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+						  <div class="accordion-body">
+							AI in education refers to the use of artificial intelligence technologies to improve teaching, learning, and administration. It helps personalize learning, automate tasks, and provide real-time insights for students and educators.
+						  </div>
+						</div>
+					  </div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header" id="headingTwo">
+						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+							How does AI help students learn better?
+						  </button>
+						</h2>
+						<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+						  <div class="accordion-body">
+							AI adapts learning content based on a student’s pace, strengths, and weaknesses. It offers personalized lessons, instant feedback, smart recommendations, and 24/7 virtual tutoring support.
+						  </div>
+						</div>
+					  </div>
+					  <div class="accordion-item">
+						<h2 class="accordion-header" id="headingThree">
+						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							Can AI replace teachers?
+						  </button>
+						</h2>
+						<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+						  <div class="accordion-body">
+							No. AI is designed to support teachers, not replace them. It handles repetitive tasks like grading and analytics, allowing educators to focus more on mentoring, creativity, and student engagement.
+						  </div>
+						</div>
+					  </div>
+					</div>
+				</div>
+				
 			</div>
 		</div> 
 	 </div>
@@ -4133,11 +4217,11 @@ $(document).ready(function () {
 				 </li>
 				 <li>
 				 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-				 <a href="tel:+1 (555) 123-4567">+1 (555) 123-4567</a>
+				 <a href="tel:+91-7291000005">+91-7291000005</a>
 				 </li>
 				 <li>
 				 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
-				 <span>123 Innovation Drive, Tech City, TC 12345</span>
+				 <span>England, UK</span>
 				 </li>
 			 </ul>
 		</div>
